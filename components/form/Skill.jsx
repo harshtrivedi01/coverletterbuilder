@@ -58,15 +58,15 @@ const Skill = ({ title }) => {
   );
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title">{title}</h2>
+    <div className="flex-col-gap-2 mt-10">
+      <h2 className="input-title text-black">{title}</h2>
       {skillType.skills.map((skill, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
             placeholder={title}
             name={title}
-            className="w-full other-input"
+            className="w-full other-input border-black border"
             value={skill}
             onChange={(e) => handleSkill(e, index, title)}
           />

@@ -36,15 +36,15 @@ const Projects = () => {
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title">Projects</h2>
+    <div className="flex-col-gap-2 mt-10">
+      <h2 className="input-title text-black">Projects</h2>
       {resumeData.projects.map((project, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
             placeholder="Project Name"
             name="name"
-            className="w-full other-input"
+            className="w-full other-input border-black border"
             value={project.name}
             onChange={(e) => handleProjects(e, index)}
           />
@@ -52,7 +52,7 @@ const Projects = () => {
             type="text"
             placeholder="Link"
             name="link"
-            className="w-full other-input"
+            className="w-full other-input border-black border"
             value={project.link}
             onChange={(e) => handleProjects(e, index)}
           />
@@ -60,7 +60,7 @@ const Projects = () => {
             type="text"
             placeholder="Description"
             name="description"
-            className="w-full other-input h-32"
+            className="w-full other-input border-black border h-32"
             value={project.description}
             maxLength="250"
             onChange={(e) => handleProjects(e, index)}
@@ -69,7 +69,7 @@ const Projects = () => {
             type="text"
             placeholder="Key Achievements"
             name="keyAchievements"
-            className="w-full other-input h-40"
+            className="w-full other-input border-black border h-40"
             value={project.keyAchievements}
             onChange={(e) => handleProjects(e, index)}
           />

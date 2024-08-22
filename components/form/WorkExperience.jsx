@@ -39,15 +39,15 @@ const WorkExperience = () => {
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title">Work Experience</h2>
+    <div className="flex-col-gap-2 mt-10">
+      <h2 className="input-title text-black">Work Experience</h2>
       {resumeData.workExperience.map((workExperience, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
             placeholder="Company"
             name="company"
-            className="w-full other-input"
+            className="w-full other-input border-black border"
             value={workExperience.company}
             onChange={(e) => handleWorkExperience(e, index)}
           />
@@ -55,7 +55,7 @@ const WorkExperience = () => {
             type="text"
             placeholder="Job Title"
             name="position"
-            className="w-full other-input"
+            className="w-full other-input border-black border"
             value={workExperience.position}
             onChange={(e) => handleWorkExperience(e, index)}
           />
@@ -63,7 +63,7 @@ const WorkExperience = () => {
             type="text"
             placeholder="Description"
             name="description"
-            className="w-full other-input h-32"
+            className="w-full other-input border-black border h-32"
             value={workExperience.description}
             maxLength="250"
             onChange={(e) => handleWorkExperience(e, index)}
@@ -72,7 +72,7 @@ const WorkExperience = () => {
             type="text"
             placeholder="Key Achievements"
             name="keyAchievements"
-            className="w-full other-input h-40"
+            className="w-full other-input border-black border h-40"
             value={workExperience.keyAchievements}
             onChange={(e) => handleWorkExperience(e, index)}
           />
@@ -81,7 +81,7 @@ const WorkExperience = () => {
               type="date"
               placeholder="Start Year"
               name="startYear"
-              className="other-input"
+              className="other-input border-black border"
               value={workExperience.startYear}
               onChange={(e) => handleWorkExperience(e, index)}
             />
@@ -89,7 +89,7 @@ const WorkExperience = () => {
               type="date"
               placeholder="End Year"
               name="endYear"
-              className="other-input"
+              className="other-input border-black border"
               value={workExperience.endYear}
               onChange={(e) => handleWorkExperience(e, index)}
             />

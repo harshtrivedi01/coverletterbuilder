@@ -34,7 +34,7 @@ export default function Hero() {
                     <div className="flex flex-col justify-center items-center h-full text-center">
                         <h1 className="text-6xl font-bold text-gray-800 mb-2">
                             Get hired with an ATS <br />
-                            <span className="text-fuchsia-700">
+                            <span className="text-black">
                                 <Typewriter
                                     words={['optimized', 'Perfect', 'Professional']}
                                     loop={0}

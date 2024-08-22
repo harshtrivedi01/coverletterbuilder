@@ -3,13 +3,13 @@ import { ResumeContext } from "../../pages/builder";
 const Summary = () => {
   const { resumeData, setResumeData, handleChange } = useContext(ResumeContext);
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title">Summary</h2>
+    <div className="flex-col-gap-2 mt-10">
+      <h2 className="input-title text-black">Summary</h2>
       <div className="grid-4">
         <textarea
           placeholder="Summary"
           name="summary"
-          className="w-full other-input h-40"
+          className="w-full other-input h-40 border-black border"
           value={resumeData.summary}
           onChange={handleChange}
           maxLength="500"

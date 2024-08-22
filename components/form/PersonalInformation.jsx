@@ -6,13 +6,13 @@ const PersonalInformation = ({}) => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Personal Information</h2>
+      <h2 className="input-title text-black">Personal Information</h2>
       <div className="grid-4">
         <input
           type="text"
           placeholder="Full Name"
           name="name"
-          className="pi"
+          className="pi border-black border"
           value={resumeData.name}
           onChange={handleChange}
         />
@@ -20,7 +20,7 @@ const PersonalInformation = ({}) => {
           type="text"
           placeholder="Job Title"
           name="position"
-          className="pi"
+         className="pi border-black border"
           value={resumeData.position}
           onChange={handleChange}
         />
@@ -28,7 +28,7 @@ const PersonalInformation = ({}) => {
           type="text"
           placeholder="Contact Information"
           name="contactInformation"
-          className="pi"
+         className="pi border-black border"
           value={resumeData.contactInformation}
           onChange={handleChange}
           minLength="10"
@@ -38,7 +38,7 @@ const PersonalInformation = ({}) => {
           type="email"
           placeholder="Email"
           name="email"
-          className="pi"
+         className="pi border-black border"
           value={resumeData.email}
           onChange={handleChange}
         />
@@ -46,7 +46,7 @@ const PersonalInformation = ({}) => {
           type="text"
           placeholder="Address"
           name="address"
-          className="pi"
+         className="pi border-black border"
           value={resumeData.address}
           onChange={handleChange}
         />
@@ -54,7 +54,7 @@ const PersonalInformation = ({}) => {
           type="file"
           name="profileImage"
           accept="image/*"
-          className="profileInput"
+          className="profileInput bg-gray-300 text-white border-black border"
           onChange={handleProfilePicture}
           placeholder="Profile Picture"
         />

@@ -30,15 +30,15 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title">Social Media</h2>
+    <div className="flex-col-gap-2 mt-10">
+      <h2 className="input-title text-black">Social Media</h2>
       {resumeData.socialMedia.map((socialMedia, index) => (
         <div key={index} className="flex-wrap-gap-2">
           <input
             type="text"
             placeholder="Social Media"
             name="socialMedia"
-            className="other-input"
+            className="other-input border-black border"
             value={socialMedia.socialMedia}
             onChange={(e) => handleSocialMedia(e, index)}
           />
@@ -46,7 +46,7 @@ const SocialMedia = () => {
             type="text"
             placeholder="Link"
             name="link"
-            className="other-input"
+            className="other-input border-black border"
             value={socialMedia.link}
             onChange={(e) => handleSocialMedia(e, index)}
           />
