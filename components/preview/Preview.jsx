@@ -204,9 +204,9 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1 ${snapshot.isDragging &&
-                                "outline-dashed outline-2 outline-gray-400 bg-white"
-                                }`}
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                                snapshot.isDragging ? "outline-dashed outline-2 outline-gray-400 bg-white" : ""
+                              }`}
                             >
                               <Skills title={skill.title} skills={skill.skills} />
                             </div>
@@ -246,7 +246,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -287,7 +287,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -337,7 +337,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -583,7 +583,7 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1  ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1  ${snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white "
                                 }`}
                             >
@@ -645,7 +645,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -686,7 +686,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -736,7 +736,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -783,7 +783,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -868,7 +868,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -909,7 +909,7 @@ const Preview = () => {
                                               {...provided.draggableProps}
                                               {...provided.dragHandleProps}
                                               className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                                 }`}
@@ -959,7 +959,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -1005,7 +1005,7 @@ const Preview = () => {
                                               {...provided.draggableProps}
                                               {...provided.dragHandleProps}
                                               className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                                 }`}
@@ -1067,7 +1067,7 @@ const Preview = () => {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      className={`mb-1 ${snapshot.isDragging &&
+                      className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                         "outline-dashed outline-2 outline-gray-400 bg-white"
                         }`}
                     >
@@ -1132,7 +1132,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                className={`hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                         ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"}`}
                               >
@@ -1184,7 +1184,7 @@ const Preview = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`mb-1 ${snapshot.isDragging &&
+                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                             "outline-dashed outline-2 outline-gray-400 bg-white"
                             }`}
                         >
@@ -1276,7 +1276,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -1317,7 +1317,7 @@ const Preview = () => {
                                               {...provided.draggableProps}
                                               {...provided.dragHandleProps}
                                               className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                                 }`}
@@ -1367,7 +1367,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -1413,7 +1413,7 @@ const Preview = () => {
                                               {...provided.draggableProps}
                                               {...provided.dragHandleProps}
                                               className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                                 }`}
@@ -1488,7 +1488,7 @@ const Preview = () => {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className={`text-sm mb-1.5 ${snapshot.isDragging &&
+                        className={`hover:scale-105 transition-transform duration-300 text-sm mb-1.5 ${snapshot.isDragging &&
                           "outline-dashed outline-2 outline-gray-400 bg-white"
                           }`}
                       >
@@ -1541,7 +1541,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -1582,7 +1582,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                              hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                              hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                               ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -1678,7 +1678,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                              hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                              hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                               ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -1747,7 +1747,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`text-sm mb-1.5 ${snapshot.isDragging &&
+                            className={` hover:scale-105 transition-transform duration-300 text-sm mb-1.5 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -1825,7 +1825,7 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1 ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                 }`}
                             >
@@ -1866,7 +1866,7 @@ const Preview = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 className={`
-                                      hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                     hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                       ${snapshot.isDragging &&
                                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                                   }`}
@@ -1916,7 +1916,7 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1 ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                 }`}
                             >
@@ -1962,7 +1962,7 @@ const Preview = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 className={`
-                                      hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                      hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                       ${snapshot.isDragging &&
                                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                                   }`}
@@ -2026,7 +2026,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -2123,7 +2123,7 @@ const Preview = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`mb-1 ${snapshot.isDragging &&
+                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                             "outline-dashed outline-2 outline-gray-400 bg-white"
                             }`}
                         >
@@ -2183,7 +2183,9 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                "outline-dashed outline-2 outline-gray-400 bg-white"
+                                }`}
                             >
                               <div className="flex flex-row justify-between space-y-1">
                                 <p className="content i-bold">{item.company}</p>
@@ -2272,7 +2274,7 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1 border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2 ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2 ${snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                 }`}
                             >
@@ -2405,7 +2407,7 @@ const Preview = () => {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
-                                    className={`mb-1 ${snapshot.isDragging &&
+                                    className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                       "outline-dashed outline-2 outline-gray-400 bg-white"
                                       }`}
                                   >
@@ -2446,7 +2448,7 @@ const Preview = () => {
                                                       {...provided.draggableProps}
                                                       {...provided.dragHandleProps}
                                                       className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                         "outline-dashed outline-2 outline-gray-400 bg-white"
                                                         }`}
@@ -2496,7 +2498,7 @@ const Preview = () => {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
-                                    className={`mb-1 ${snapshot.isDragging &&
+                                    className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                       "outline-dashed outline-2 outline-gray-400 bg-white"
                                       }`}
                                   >
@@ -2615,7 +2617,7 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1 ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                 }`}
                             >
@@ -2712,7 +2714,7 @@ const Preview = () => {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
-                                    className={`hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                    className={` hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                         ${snapshot.isDragging &&
                                       "outline-dashed outline-2 outline-gray-400 bg-white"}`}
                                   >
@@ -2770,7 +2772,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "  "
                               }`}
                           >
@@ -2850,7 +2852,7 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1 ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                 }`}
                             >
@@ -2893,7 +2895,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -2934,7 +2936,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -2984,7 +2986,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -3030,7 +3032,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -3135,7 +3137,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -3176,7 +3178,7 @@ const Preview = () => {
                                               {...provided.draggableProps}
                                               {...provided.dragHandleProps}
                                               className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                                 }`}
@@ -3226,7 +3228,7 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
                               }`}
                           >
@@ -3272,7 +3274,7 @@ const Preview = () => {
                                               {...provided.draggableProps}
                                               {...provided.dragHandleProps}
                                               className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                                 }`}
@@ -3329,7 +3331,7 @@ const Preview = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`mb-1 ${snapshot.isDragging &&
+                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                             "outline-dashed outline-2 outline-gray-400 bg-white text-sm text-gray-800"
                             }`}
                         >
@@ -3443,7 +3445,7 @@ const Preview = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`mb-1 ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white"
                                 }`}
                             >
@@ -3479,7 +3481,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -3520,7 +3522,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -3570,7 +3572,7 @@ const Preview = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                               >
@@ -3616,7 +3618,7 @@ const Preview = () => {
                                                   {...provided.draggableProps}
                                                   {...provided.dragHandleProps}
                                                   className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                           ${snapshot.isDragging &&
                                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                                     }`}
@@ -3647,10 +3649,6 @@ const Preview = () => {
                   </Droppable>
                 )}
           </div>
-
-         
-
-         
         </div>
 
         <div className="mb-5">
@@ -3658,7 +3656,6 @@ const Preview = () => {
           <ul className="list-none">
           {resumeData.education.length > 0 && (
                     <div className="mb-1">
-                     
                       {resumeData.education.map((item, index) => (
                         <div  key={index} className="mb-1 text-lg">
                           <p className="content i-bold " style={{ fontSize: '1.3rem' }}>{item.degree}</p>
