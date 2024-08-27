@@ -5,7 +5,7 @@ import {
   FaTwitter,
   FaFacebook,
   FaInstagram,
-  FaYoutube, FaBold, FaItalic, FaPlus, FaMinus, FaAlignLeft, FaAlignCenter, FaAlignRight,
+  FaYoutube, FaBold, FaItalic, FaPlus, FaMinus, FaAlignLeft, FaAlignCenter, FaAlignRight,FaLink,
   FaUnderline,
 } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
@@ -22,13 +22,12 @@ import Language from "./Language";
 import Certification from "./Certification";
 import { HighlightMenu } from "react-highlight-menu";
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
-
 // Importing draggable components dynamically
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
 const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false });
 
-const Preview = () => {
+const Preview = ({headerColor}) => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [content, setContent] = useState(resumeData);
   const [selectedTemplate, setSelectedTemplate] = useState('template1'); // State to hold the selected template
@@ -47,7 +46,7 @@ const Preview = () => {
   const templates = {
     template1: (
       <div>
-        <h1>Template 1</h1>
+        <h1 style={{ color: headerColor }}>Template 1</h1>
         <div className="">
           <A4PageWrapper>
             <HighlightMenu
@@ -119,7 +118,7 @@ const Preview = () => {
                   />
                 </div>
               )}
-              <h1 className="name">{resumeData.name}</h1>
+              <h1 className="name" style={{ color: headerColor }}>{resumeData.name}</h1>
               <p className="profession">{resumeData.position}</p>
               <ContactInfo
                 mainclass="flex flex-row gap-1 mb-1 contact"
@@ -164,7 +163,7 @@ const Preview = () => {
               <div className="col-span-1 space-y-2">
                 {resumeData.summary.length > 0 && (
                   <div className="mb-1">
-                    <h2 className="section-title mb-1 border-b-2 border-gray-300">
+                    <h2 style={{ color: headerColor }} className="section-title mb-1 border-b-2 border-gray-300">
                       Summary
                     </h2>
                     <p className="content break-words">{resumeData.summary}</p>
@@ -173,7 +172,7 @@ const Preview = () => {
                 <div>
                   {resumeData.education.length > 0 && (
                     <div className="mb-1">
-                      <h2 className="section-title mb-1 border-b-2 border-gray-300">
+                      <h2 style={{ color: headerColor }} className="section-title mb-1 border-b-2 border-gray-300">
                         Education
                       </h2>
                       {resumeData.education.map((item, index) => (
@@ -479,6 +478,11 @@ const Preview = () => {
                     icon={<FaAlignRight />}
                     onClick={() => alignText('Right')}
                   />
+                   <MenuButton className="mx-3"
+                title="Add Link"
+                icon={<FaLink />}
+                onClick={toggleLink}
+              />
                 </>
               )}
             />
@@ -3682,6 +3686,298 @@ const Preview = () => {
         </div>
       </div>
     ),
+    template14: (
+      <div className="bg-gray-100 min-h-screen p-5">
+      <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div className="flex items-center border-b-2 border-gray-800 pb-4 mb-6">
+          <div className="flex-1">
+          <Image
+            src={resumeData.profilePicture}
+            alt="profile"
+            width={100}
+            height={100}
+            className="rounded-full mr-5"
+          />
+          </div>
+          <div className="flex-3 text-right pl-6">
+            <h1 className="text-3xl font-bold text-gray-800 m-0">{resumeData.name}</h1>
+            <h2 className="text-2xl text-gray-600 m-0">{resumeData.position}</h2>
+            <p className="text-gray-500 mt-2">
+            <ContactInfo
+              mainclass=" gap-1 mb-1 contact"
+              linkclass="inline-flex items-center gap-1"
+              teldata={resumeData.contactInformation}
+              emaildata={resumeData.email}
+              addressdata={resumeData.address}
+              telicon={<MdPhone />}
+              emailicon={<MdEmail />}
+              addressicon={<MdLocationOn />}
+            />
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Profile</h3>
+          <p>
+          {resumeData.summary}
+          </p>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Education</h3>
+          <ul className="list-none p-0">
+          {resumeData.education.length > 0 && (
+                    <div className="mb-1">
+                      {resumeData.education.map((item, index) => (
+                        <div  key={index} className="mb-1 text-lg">
+                          <p className="content i-bold " style={{ fontSize: '1.3rem' }}>{item.degree}</p>
+                          <p className="content">{item.school}</p>
+                          <DateRange className="mb-1 text-lg"
+                            startYear={item.startYear}
+                            endYear={item.endYear}
+                            id={`education-start-end-date`}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+          </ul>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Skills</h3>
+          <ul className="list-none p-0">
+          <Droppable droppableId="skills" type="SKILLS">
+                  {(provided) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                      {resumeData.skills.map((skill, index) => (
+                        <Draggable
+                          key={`SKILLS-${index}`}
+                          draggableId={`SKILLS-${index}`}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                "outline-dashed outline-2 outline-gray-400 bg-white"
+                                }`}
+                            >
+                              <Skills title={skill.title} skills={skill.skills} />
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Projects</h3>
+          {resumeData.workExperience.length > 0 && (
+                  <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
+                    {(provided) => (
+                      <div {...provided.droppableProps} ref={provided.innerRef}>
+                       
+                        {resumeData.workExperience.map((item, index) => (
+                          <Draggable
+                            key={`${item.company}-${index}`}
+                            draggableId={`WORK_EXPERIENCE-${index}`}
+                            index={index}
+                          >
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                  "outline-dashed outline-2 outline-gray-400 bg-white"
+                                  }`}
+                              >
+                                <div className="justify-between space-y-1">
+                                  <p className="content i-bold text-2xl" style={{ fontSize: '1.3rem' }}>{item.company}</p>
+                                  <DateRange
+                                    startYear={item.startYear}
+                                    endYear={item.endYear}
+                                    id={`work-experience-start-end-date`}
+                                  />
+                                </div>
+                                <p className="content">{item.position}</p>
+                                <p className="content hyphens-auto">
+                                  {item.description}
+                                </p>
+                                <Droppable
+                                  droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
+                                  type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
+                                >
+                                  {(provided) => (
+                                    <ul
+                                      className="list-disc ul-padding content"
+                                      {...provided.droppableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      {typeof item.keyAchievements === "string" &&
+                                        item.keyAchievements
+                                          .split("\n")
+                                          .map((achievement, subIndex) => (
+                                            <Draggable
+                                              key={`${item.company}-${index}-${subIndex}`}
+                                              draggableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}-${subIndex}`}
+                                              index={subIndex}
+                                            >
+                                              {(provided, snapshot) => (
+                                                <li
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                  className={`
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          ${snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                    }`}
+                                                >
+                                                  <div
+                                                    dangerouslySetInnerHTML={{
+                                                      __html: achievement,
+                                                    }}
+                                                    contentEditable
+                                                  />
+                                                </li>
+                                              )}
+                                            </Draggable>
+                                          ))}
+                                      {provided.placeholder}
+                                    </ul>
+                                  )}
+                                </Droppable>
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                )}
+                {resumeData.projects.length > 0 && (
+                  <Droppable droppableId="projects" type="PROJECTS">
+                    {(provided) => (
+                      <div {...provided.droppableProps} ref={provided.innerRef}>
+                        <h2
+                          className="section-title mb-1 border-b-2 border-gray-300 editable"
+                          contentEditable
+                          suppressContentEditableWarning
+                        >
+                          Projects
+                        </h2>
+                        {resumeData.projects.map((item, index) => (
+                          <Draggable
+                            key={`${item.name}-${index}`}
+                            draggableId={`PROJECTS-${index}`}
+                            index={index}
+                          >
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                  "outline-dashed outline-2 outline-gray-400 bg-white"
+                                  }`}
+                              >
+                                <div className="flex flex-row justify-between space-y-1">
+                                  <p className="content i-bold">{item.name}</p>
+                                  <DateRange
+                                    startYear={item.startYear}
+                                    endYear={item.endYear}
+                                    id={`work-experience-start-end-date`}
+                                  />
+                                </div>
+                                <Link
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="content"
+                                >
+                                  {item.link}
+                                </Link>
+                                <p className="content">{item.description}</p>
+                                <Droppable
+                                  droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
+                                  type="PROJECTS_KEY_ACHIEVEMENT"
+                                >
+                                  {(provided) => (
+                                    <ul
+                                      className="list-disc ul-padding content"
+                                      {...provided.droppableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      {typeof item.keyAchievements === "string" &&
+                                        item.keyAchievements
+                                          .split("\n")
+                                          .map((achievement, subIndex) => (
+                                            <Draggable
+                                              key={`${item.name}-${index}-${subIndex}`}
+                                              draggableId={`PROJECTS_KEY_ACHIEVEMENT-${index}-${subIndex}`}
+                                              index={subIndex}
+                                            >
+                                              {(provided, snapshot) => (
+                                                <li
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                  className={`
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          ${snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                    }`}
+                                                >
+                                                  <div
+                                                    dangerouslySetInnerHTML={{
+                                                      __html: achievement,
+                                                    }}
+                                                    contentEditable
+                                                  />
+                                                </li>
+                                              )}
+                                            </Draggable>
+                                          ))}
+                                      {provided.placeholder}
+                                    </ul>
+                                  )}
+                                </Droppable>
+                              </div>
+
+                            )}
+
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                )}
+        </div>
+        <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Languages</h3>
+        <div className="mb-5">
+         
+          <Language  languages={resumeData.languages} />
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Certifications</h3>
+                <Certification
+                  
+                  certifications={resumeData.certifications}
+                />
+        </div>
+      </div>
+ 
+    </div>
+    ),
     // Add more templates here
   };
 
@@ -3745,26 +4041,32 @@ const Preview = () => {
     <button
       onClick={onClick}
       title={title}
-      className="p-2 hover:bg-gray-200 rounded font-semibold"
+      className="flex items-center justify-center p-3 hover:bg-gray-200 rounded font-semibold text-lg"
     >
       {icon}
     </button>
   );
-
+  
   const formatText = (command, value = null) => {
     document.execCommand(command, false, value);
   };
-
+  
   const toggleBold = () => formatText('bold');
   const toggleItalic = () => formatText('italic');
   const toggleUnderline = () => formatText('underline');
   const changeFontSize = (size) => formatText('fontSize', size);
   const alignText = (alignment) => formatText(`justify${alignment}`);
-
+  const toggleLink = () => {
+    const url = prompt("Enter the URL:");
+    if (url) {
+      formatText('createLink', url);
+    }
+  };
+  
   useKeyboardShortcut('b', true, toggleBold);
   useKeyboardShortcut('i', true, toggleItalic);
   useKeyboardShortcut('u', true, toggleUnderline);
-
+  
   return (
     <div className="md:max-w-[60%] sticky top-0 preview rm-padding-print p-6 md:overflow-y-scroll md:h-screen">
       <div className="mb-4">
@@ -3780,7 +4082,7 @@ const Preview = () => {
           ))}
         </select>
       </div>
-
+  
       <A4PageWrapper>
         <HighlightMenu
           styles={{
@@ -3788,7 +4090,7 @@ const Preview = () => {
             backgroundColor: "#C026D3",
             boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
             zIndex: 10,
-            borderRadius: "5px",
+             borderRadius: "5px",
             padding: "3px",
           }}
           target="body"
@@ -3834,6 +4136,11 @@ const Preview = () => {
                 icon={<FaAlignRight />}
                 onClick={() => alignText('Right')}
               />
+              <MenuButton className="mx-3"
+                title="Add Link"
+                icon={<FaLink />}
+                onClick={toggleLink}
+              />
             </>
           )}
         />
@@ -3860,6 +4167,10 @@ const A4PageWrapper = ({ children }) => {
       {children}
     </div>
   );
+
 };
+
+
+
 
 export default Preview;
