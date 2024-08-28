@@ -93,6 +93,7 @@ export default function Builder(props) {
           setResumeData,
           handleProfilePicture,
           handleChange,
+          headerColor,
         }}
       >
         <Meta
