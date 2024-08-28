@@ -27,8 +27,8 @@ const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) =
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
 const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false });
 
-const Preview = ({headerColor}) => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
+const Preview = () => {
+  const { resumeData, setResumeData,headerColor } = useContext(ResumeContext);
   const [content, setContent] = useState(resumeData);
   const [selectedTemplate, setSelectedTemplate] = useState('template1'); // State to hold the selected template
 
@@ -231,7 +231,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }} >
                           Work Experience
                         </h2>
                         {resumeData.workExperience.map((item, index) => (
@@ -322,7 +322,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }} >
                           Projects
                         </h2>
                         {resumeData.projects.map((item, index) => (
@@ -499,7 +499,7 @@ const Preview = ({headerColor}) => {
                   />
                 </div>
               )}
-              <h1 className="name">{resumeData.name}</h1>
+              <h1 className="name" style={{ color: headerColor }}>{resumeData.name}</h1>
               <p className="profession">{resumeData.position}</p>
               <ContactInfo
                 mainclass=" flex-col gap-1 mb-1 contact"
@@ -547,7 +547,7 @@ const Preview = ({headerColor}) => {
               <div className="col-span-1 space-y-2">
                 {resumeData.summary.length > 0 && (
                   <div className="mb-1">
-                    <h2 className="section-title mb-1 border-b-2 border-gray-300">
+                    <h2 className="section-title mb-1 border-b-2 border-gray-300" style={{ color: headerColor }}>
                       Summary
                     </h2>
                     <p className="content break-words border-l-4 border-l-gray-800 p-2" style={{ background: "#eee" }}>{resumeData.summary}</p>
@@ -556,7 +556,7 @@ const Preview = ({headerColor}) => {
                 <div>
                   {resumeData.education.length > 0 && (
                     <div className="mb-1">
-                      <h2 className="section-title mb-1 border-b-2 border-gray-300">
+                      <h2 className="section-title mb-1 border-b-2 border-gray-300" style={{ color: headerColor }}>
                         Education
                       </h2>
                       {resumeData.education.map((item, index) => (
@@ -609,7 +609,7 @@ const Preview = ({headerColor}) => {
                 </Droppable>
                 {resumeData.languages.length > 0 && (
                   <div >
-                    <h2 className="section-title mb-1 border-b-2 border-gray-300" title="lan">
+                    <h2 className="section-title mb-1 border-b-2 border-gray-300" title="lan" style={{ color: headerColor }}>
                       Language
                     </h2>
                     <p className="sub-content border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2">{resumeData.languages.join(", ")}</p>
@@ -617,7 +617,7 @@ const Preview = ({headerColor}) => {
                 )}
                 {resumeData.certifications.length > 0 &&
                   <div>
-                    <h2 className="section-title mb-1 border-b-2 border-gray-300">Certifications</h2>
+                    <h2 className="section-title mb-1 border-b-2 border-gray-300" style={{ color: headerColor }}>Certifications</h2>
                     <ul className="sub-content border-l-4 border-l-gray-800 p-2 bg-stone-200 my-2 my-2">
                       {resumeData.certifications.map((certification, index) => (
                         <li key={index}>{certification}</li>
@@ -635,7 +635,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }} >
                           Work Experience
                         </h2>
                         {resumeData.workExperience.map((item, index) => (
@@ -726,7 +726,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }}  >
                           Projects
                         </h2>
                         {resumeData.projects.map((item, index) => (
@@ -829,7 +829,7 @@ const Preview = ({headerColor}) => {
     template3: (
       <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
         <header className="mb-6">
-          <h1 className="text-4sl font-bold text-teal-600">{resumeData.name}</h1>
+          <h1 className="text-4sl font-bold text-teal-600" style={{ color: headerColor }}>{resumeData.name}</h1>
           <p className="text-lg text-gray-700">{resumeData.position}</p>
           <ContactInfo
             mainclass="flex flex-row gap-1 mb-1 contact"
@@ -848,7 +848,7 @@ const Preview = ({headerColor}) => {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-teal-600 mb-4">Relevant Work Experience</h2>
+          <h2 className="text-2xl font-semibold text-teal-600 mb-4" style={{ color: headerColor }}>Relevant Work Experience</h2>
           <div className="col-span-2 space-y-2">
             {resumeData.workExperience.length > 0 && (
               <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
@@ -858,7 +858,7 @@ const Preview = ({headerColor}) => {
                       className="section-title mb-1 border-b-2 border-gray-300 editable"
                       contentEditable
                       suppressContentEditableWarning
-                    >
+                      style={{ color: headerColor }}>
                       Work Experience
                     </h2>
                     {resumeData.workExperience.map((item, index) => (
@@ -949,7 +949,7 @@ const Preview = ({headerColor}) => {
                       className="section-title mb-1 border-b-2 border-gray-300 editable"
                       contentEditable
                       suppressContentEditableWarning
-                    >
+                      style={{ color: headerColor }} >
                       Projects
                     </h2>
                     {resumeData.projects.map((item, index) => (
@@ -1042,7 +1042,7 @@ const Preview = ({headerColor}) => {
           </div>
         </section>
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-teal-600 mb-4">Education</h2>
+          <h2 className="text-2xl font-semibold text-teal-600 mb-4" style={{ color: headerColor }}>Education</h2>
           {resumeData.education.length > 0 && resumeData.education.map((item, index) => (
             <div key={index}>
               <h3 className="text-xl font-bold text-gray-800">{item.degree}</h3>
@@ -1075,7 +1075,7 @@ const Preview = ({headerColor}) => {
                         "outline-dashed outline-2 outline-gray-400 bg-white"
                         }`}
                     >
-                      <p><h3 className='text-teal-600'>{skill.title}</h3>  <span className="text-gray-500">{skill.skills}</span></p>
+                      <p><h3 className='text-teal-600' style={{ color: headerColor }}>{skill.title}</h3>  <span className="text-gray-500">{skill.skills}</span></p>
                       <p > </p>
                     </div>
                   )}
@@ -1091,11 +1091,11 @@ const Preview = ({headerColor}) => {
     template4: (
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto my-5 bg-white shadow-lg">
         <div className="flex-2 p-5 border-r border-gray-300">
-          <h1 className="text-2xl font-bold text-blue-500 mb-3">{resumeData.name}</h1>
+          <h1 className="text-2xl font-bold text-blue-500 mb-3" style={{ color: headerColor }}>{resumeData.name}</h1>
           <h2 className="text-xl text-gray-800 mb-5">{resumeData.position}</h2>
           <p className="mb-5 text-xs">{resumeData.summary}</p>
 
-          <h3 className="text-lg font-semibold text-gray-800 mt-7 mb-4 border-b-2 text-[#818cf8] pb-1">Work Experience</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mt-7 mb-4 border-b-2 text-[#818cf8] pb-1" style={{ color: headerColor }}>Work Experience</h3>
           {resumeData.workExperience.map((item, index) => (
             <div key={index} className="mb-7">
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
@@ -1159,7 +1159,7 @@ const Preview = ({headerColor}) => {
 
         <div className="flex-1 p-5 bg-gray-100">
           <div className="mb-6">
-            <h4 className="text-lg font-semibold  text-[#818cf8] mb-3 border-b border-gray-300 pb-1">Contact</h4>
+            <h4 className="text-lg font-semibold  text-[#818cf8] mb-3 border-b border-gray-300 pb-1" style={{ color: headerColor }}>Contact</h4>
             <ContactInfo
               mainclass=" contact"
               linkclass="inline-flex items-center gap-1"
@@ -1173,7 +1173,7 @@ const Preview = ({headerColor}) => {
           </div>
 
           <div className="mb-6">
-            <h4 className="text-lg font-semibold  text-[#818cf8] mb-3 border-b border-gray-300 pb-1">Skills</h4>
+            <h4 className="text-lg font-semibold  text-[#818cf8] mb-3 border-b border-gray-300 pb-1" style={{ color: headerColor }}>Skills</h4>
             <Droppable droppableId="skills" type="SKILLS">
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -1206,7 +1206,7 @@ const Preview = ({headerColor}) => {
           <div className="mb-6">
             {resumeData.education.length > 0 && (
               <div className="mb-1">
-                <h2 className="section-title mb-1 border-b-2 text-[#818cf8]">
+                <h2 className="section-title mb-1 border-b-2 text-[#818cf8]" style={{ color: headerColor }}>
                   Education
                 </h2>
                 {resumeData.education.map((item, index) => (
@@ -1245,7 +1245,7 @@ const Preview = ({headerColor}) => {
               </div>
             )}
           </div>
-          <h1 className="text-2xl mb-1.5">{resumeData.name}</h1>
+          <h1 className="text-2xl mb-1.5" style={{ color: headerColor }}>{resumeData.name}</h1>
           <p className="text-base m-0 flex justify-center items-center">
             <ContactInfo
               mainclass="flex flex-row gap-4 mb-1 contact"
@@ -1262,7 +1262,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <section className="experience mb-6">
-          <h2 className="text-lm mb-2.5 uppercase border-b border-black pb-0.5 fw-bold">Professional Experience</h2>
+          <h2 className="text-lm mb-2.5 uppercase border-b border-black pb-0.5 fw-bold" style={{ color: headerColor }}>Professional Experience</h2>
 
           <div className="col-span-2 space-y-2">
             {resumeData.workExperience.length > 0 && (
@@ -1357,7 +1357,7 @@ const Preview = ({headerColor}) => {
                       className="section-title mb-1 border-b-2 border-gray-300 editable"
                       contentEditable
                       suppressContentEditableWarning
-                    >
+                      style={{ color: headerColor }}  >
                       Projects
                     </h2>
                     {resumeData.projects.map((item, index) => (
@@ -1457,7 +1457,7 @@ const Preview = ({headerColor}) => {
         <section className="education mb-6">
           {resumeData.education.length > 0 && (
             <div className="mb-1">
-              <h2 className="text-lm mb-2.5 uppercase border-b border-black pb-0.5 fw-bold">Education</h2>
+              <h2 className="text-lm mb-2.5 uppercase border-b border-black pb-0.5 fw-bold" style={{ color: headerColor }}>Education</h2>
               {resumeData.education.map((item, index) => (
                 <div key={index} className="mb-1">
                   <div className="flex justify-end text-sm italic">
@@ -1472,7 +1472,7 @@ const Preview = ({headerColor}) => {
         </section>
 
         <section className="skills mb-6">
-          <h2 className="text-lg mb-2.5 uppercase border-b border-black pb-0.5">Skills</h2>
+          <h2 className="text-lg mb-2.5 uppercase border-b border-black pb-0.5" style={{ color: headerColor }}>Skills</h2>
 
           <Droppable droppableId="skills" type="SKILLS">
             {(provided) => (
@@ -1515,10 +1515,10 @@ const Preview = ({headerColor}) => {
         <div className="container mx-auto flex bg-white shadow-lg">
           {/* Left Column */}
           <div className="left-column w-8/12 p-8 border-r border-gray-300">
-            <h3 className="text-4xm text-orange-600 mb-2">{resumeData.name}</h3>
-            <h2 className="text-2xl text-gray-700 mb-8">{resumeData.position}</h2>
+            <h3 className="text-4xm text-orange-600 mb-2" style={{ color: headerColor }}>{resumeData.name}</h3>
+            <h2 className="text-2xl text-gray-700 mb-8" style={{ color: headerColor }}>{resumeData.position}</h2>
 
-            <h3 className="text-xl text-orange-600 mt-10 mb-2">WORK EXPERIENCE</h3>
+            <h3 className="text-xl text-orange-600 mt-10 mb-2" style={{ color: headerColor }}>WORK EXPERIENCE</h3>
 
             {/* Job 1 */}
             <div className="job mb-8">
@@ -1531,7 +1531,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable leading-tight"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }} >
                           Work Experience
                         </h2>
                         {resumeData.workExperience.map((item, index) => (
@@ -1622,7 +1622,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable leading-tight"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }} >
                           Projects
                         </h2>
                         {resumeData.projects.map((item, index) => (
@@ -1718,7 +1718,7 @@ const Preview = ({headerColor}) => {
           {/* Right Column */}
           <div className="right-column w-4/12 bg-gray-100 p-8">
             <div className="contact mb-8">
-              <h3 className="text-xl text-orange-600 mb-2">CONTACT</h3>
+              <h3 className="text-xl text-orange-600 mb-2" style={{ color: headerColor }}>CONTACT</h3>
               <ContactInfo
                 mainclass="  gap-1 mb-1 contact"
                 linkclass="inline-flex items-center gap-1"
@@ -1732,7 +1732,7 @@ const Preview = ({headerColor}) => {
             </div>
 
             <div className="skills mb-8">
-              <h3 className="text-xl text-orange-600 mb-2">SKILLS</h3>
+              <h3 className="text-xl text-orange-600 mb-2" style={{ color: headerColor }}>SKILLS</h3>
               <Droppable droppableId="skills" type="SKILLS">
                 {(provided) => (
                   <ul
@@ -1764,7 +1764,7 @@ const Preview = ({headerColor}) => {
                   </ul>
                 )}
               </Droppable>
-              <p className="text-gray-700 mt-4 text-orange-600">Languages:</p>
+              <p className="text-gray-700 mt-4 text-orange-600" style={{ color: headerColor }}>Languages:</p>
               <Language languages={resumeData.languages} />
               <Certification
                 title="Certifications"
@@ -1775,7 +1775,7 @@ const Preview = ({headerColor}) => {
             <div className="education mb-8">
               {resumeData.education.length > 0 && (
                 <div className="mb-1">
-                  <h2 className="section-title mb-1 border-b-2 border-gray-300 text-orange-600">
+                  <h2 className="section-title mb-1 border-b-2 border-gray-300 text-orange-600" style={{ color: headerColor }}>
                     Education
                   </h2>
                   {resumeData.education.map((item, index) => (
@@ -1804,13 +1804,13 @@ const Preview = ({headerColor}) => {
         <section className="flex justify-between">
           <div className="w-8/12">
             <header className=" border-b-2 border-gray-200 pb-5 mb-5">
-              <h1 className="text-4xl text-blue-700">{resumeData.name}</h1>
+              <h1 className="text-4xl text-blue-700" style={{ color: headerColor }}>{resumeData.name}</h1>
               <h2 className="text-2xl text-gray-800 mb-2">{resumeData.position}</h2>
               <p className="text-base text-gray-600">
                 {resumeData.summary}
               </p>
             </header>
-            <h3 className="text-xl text-blue-700 mb-2">WORK EXPERIENCE</h3>
+            <h3 className="text-xl text-blue-700 mb-2" style={{ color: headerColor }}>WORK EXPERIENCE</h3>
 
 
             <div className="col-span-2 space-y-2">
@@ -1906,7 +1906,7 @@ const Preview = ({headerColor}) => {
                         className="section-title mb-1 border-b-2 border-gray-300 editable"
                         contentEditable
                         suppressContentEditableWarning
-                      >
+                        style={{ color: headerColor }}   >
                         Projects
                       </h2>
                       {resumeData.projects.map((item, index) => (
@@ -2001,7 +2001,7 @@ const Preview = ({headerColor}) => {
 
           <aside className="w-4/12 bg-[#d4d4d8] rounded p-2">
             <div className="mb-5">
-              <h3 className="text-lg text-blue-700 mb-2">CONTACT</h3>
+              <h3 className="text-lg text-blue-700 mb-2" style={{ color: headerColor }}>CONTACT</h3>
               <ContactInfo
                 mainclass=" gap-1 mb-1 contact"
                 linkclass="inline-flex items-center gap-1"
@@ -2015,7 +2015,7 @@ const Preview = ({headerColor}) => {
             </div>
 
             <div className="mb-5">
-              <h3 className="text-lg text-blue-700 mb-2">SKILLS</h3>
+              <h3 className="text-lg text-blue-700 mb-2" style={{ color: headerColor }}>SKILLS</h3>
               <Droppable droppableId="skills" type="SKILLS">
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -2048,7 +2048,7 @@ const Preview = ({headerColor}) => {
             </div>
 
             <div className="mb-5">
-              <h3 className="text-lg text-blue-700 mb-2">EDUCATION</h3>
+              <h3 className="text-lg text-blue-700 mb-2" style={{ color: headerColor }}>EDUCATION</h3>
               {resumeData.education.length > 0 && (
                 <div className="mb-1">
                   {resumeData.education.map((item, index) => (
@@ -2095,7 +2095,7 @@ const Preview = ({headerColor}) => {
             )}
           </div>
           <div className="mb-10">
-            <h3 className="text-lg font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3">CONTACT</h3>
+            <h3 className="text-lg font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>CONTACT</h3>
             <ContactInfo
               mainclass="gap-1 mb-1 contact"
               linkclass="inline-flex items-center gap-1"
@@ -2108,11 +2108,11 @@ const Preview = ({headerColor}) => {
             />
           </div>
           <div className="mb-10">
-            <h3 className="text-lg font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3">COMMUNICATION</h3>
+            <h3 className="text-lg font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>COMMUNICATION</h3>
             <p>{resumeData.summary}</p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3">LEADERSHIP</h3>
+            <h3 className="text-lg font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>LEADERSHIP</h3>
             <Droppable droppableId="skills" type="SKILLS">
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -2144,11 +2144,11 @@ const Preview = ({headerColor}) => {
           </div>
         </div>
         <div className="w-2/3 p-5">
-          <h1 className="text-4xl font-bold text-gray-800 mb-1">{resumeData.name}</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-1" style={{ color: headerColor }}>{resumeData.name}</h1>
           <h2 className="text-2xl font-medium text-gray-700 mb-10">{resumeData.position}</h2>
           {resumeData.education.length > 0 && (
             <div className="mb-10">
-              <h3 className="text-xl font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3">EDUCATION</h3>
+              <h3 className="text-xl font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>EDUCATION</h3>
               {resumeData.education.map((item, index) => (
                 <div key={index} >
                   <p>{item.degree}</p>
@@ -2173,7 +2173,7 @@ const Preview = ({headerColor}) => {
                         className="text-xl font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-3"
                         contentEditable
                         suppressContentEditableWarning
-                      >
+                        style={{ color: headerColor }}  >
                         Experience
                       </h2>
                       {resumeData.workExperience.map((item, index) => (
@@ -2264,7 +2264,7 @@ const Preview = ({headerColor}) => {
                         className="section-title mb-1 border-b-2 border-gray-300 editable"
                         contentEditable
                         suppressContentEditableWarning
-                      >
+                        style={{ color: headerColor }}   >
                         Projects
                       </h2>
                       {resumeData.projects.map((item, index) => (
@@ -2366,7 +2366,7 @@ const Preview = ({headerColor}) => {
       <div className="bg-gray-100 p-5">
         <div className="max-w-4xl mx-auto bg-white p-5 shadow-lg">
           <div className="mb-5">
-            <h1 className="text-4xl font-bold text-left">{resumeData.name}</h1>
+            <h1 className="text-4xl font-bold text-left" style={{ color: headerColor }}>{resumeData.name}</h1>
             <p className="text-sm text-gray-600">{resumeData.summary}</p>
           </div>
           <div className="text-right mb-5 text-sm text-gray-600">
@@ -2386,7 +2386,7 @@ const Preview = ({headerColor}) => {
           <div className="flex justify-between">
             <div className="w-3/5">
               <section className="mb-5">
-                <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3">Experience</h2>
+                <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>Experience</h2>
                 <div className="mb-3">
                   <div className="col-span-2 space-y-2">
                     {resumeData.workExperience.length > 0 && (
@@ -2397,7 +2397,7 @@ const Preview = ({headerColor}) => {
                               className="section-title mb-1 border-b-2 border-gray-300 editable"
                               contentEditable
                               suppressContentEditableWarning
-                            >
+                              style={{ color: headerColor }} >
                               Work Experience
                             </h2>
                             {resumeData.workExperience.map((item, index) => (
@@ -2488,7 +2488,7 @@ const Preview = ({headerColor}) => {
                               className="section-title mb-1 border-b-2 border-gray-300 editable"
                               contentEditable
                               suppressContentEditableWarning
-                            >
+                              style={{ color: headerColor }}   >
                               Projects
                             </h2>
                             {resumeData.projects.map((item, index) => (
@@ -2586,7 +2586,7 @@ const Preview = ({headerColor}) => {
               <section className="mb-5">
                 {resumeData.education.length > 0 && (
                   <div className="mb-1">
-                    <h2 className=" text-lg font-bold border-b border-gray-300 pb-1 mb-3">
+                    <h2 className=" text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>
                       Education
                     </h2>
                     {resumeData.education.map((item, index) => (
@@ -2606,7 +2606,7 @@ const Preview = ({headerColor}) => {
             </div>
             <div className="w-2/5">
               <section className="mb-5">
-                <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3">Skills</h2>
+                <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>Skills</h2>
                 <Droppable droppableId="skills" type="SKILLS">
                   {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -2655,7 +2655,7 @@ const Preview = ({headerColor}) => {
       <div className="bg-gray-100 p-5">
         <div className="max-w-4xl bg-white p-6 mx-auto shadow-md border-l-4 border-red-600">
           <header className="text-center border-b-2 border-red-600 pb-3 mb-5">
-            <h1 className="text-3xl text-gray-800 uppercase tracking-wider">{resumeData.name}</h1>
+            <h1 className="text-3xl text-gray-800 uppercase tracking-wider" style={{ color: headerColor }}>{resumeData.name}</h1>
             <p className="text-sm text-gray-500 text-center m-0">
               <ContactInfo
                 mainclass="flex flex-row gap-1 justify-center items-center mb-1 contact"
@@ -2676,7 +2676,7 @@ const Preview = ({headerColor}) => {
           </section>
 
           <section className="mb-5">
-            <h2 className="text-xl text-red-600 uppercase mb-3">Experience</h2>
+            <h2 className="text-xl text-red-600 uppercase mb-3" style={{ color: headerColor }}>Experience</h2>
             <div className="mb-5">
               {resumeData.workExperience.map((item, index) => (
                 <div key={index} className="mb-7">
@@ -2740,7 +2740,7 @@ const Preview = ({headerColor}) => {
           </section>
 
           <section className="mb-5">
-            <h2 className="text-xl text-red-600 uppercase mb-3">Education</h2>
+            <h2 className="text-xl text-red-600 uppercase mb-3" style={{ color: headerColor }}>Education</h2>
             {resumeData.education.length > 0 && (
               <div className="mb-1">
                 {resumeData.education.map((item, index) => (
@@ -2760,7 +2760,7 @@ const Preview = ({headerColor}) => {
           </section>
 
           <section>
-            <h2 className="text-xl text-red-600 uppercase mb-3">Skills</h2>
+            <h2 className="text-xl text-red-600 uppercase mb-3" style={{ color: headerColor }}>Skills</h2>
             <ul className="list-none pl-0 text-sm text-gray-500 leading-relaxed">
               <Droppable droppableId="skills" type="SKILLS">
                 {(provided) => (
@@ -2797,7 +2797,7 @@ const Preview = ({headerColor}) => {
 
     template11: (
       <div className="container mx-auto my-12 bg-white shadow-lg overflow-hidden w-full ">
-        <div className="header flex bg-[#2b3d63] text-white p-5 items-center">
+        <div className="header flex bg-[#2b3d63] text-white p-5 items-center" >
           <div className="profile-pic mr-5">
             {/* <img
             src="profile-pic.jpg"
@@ -2813,7 +2813,7 @@ const Preview = ({headerColor}) => {
             />
           </div>
           <div className="name-title">
-            <h1 className="text-3xl m-0">
+            <h1 className="text-3xl m-0" style={{ color: headerColor }}>
               {resumeData.name}
             </h1>
             <p className="mt-1 text-lg">{resumeData.position}</p>
@@ -2822,7 +2822,7 @@ const Preview = ({headerColor}) => {
         <div className="main-content flex p-5">
           <div className="left-column flex-1 p-5">
             <div className="about-me mb-5">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5">About Me</h2>
+              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5" style={{ color: headerColor }}>About Me</h2>
               <p>
                 {resumeData.summary}
               </p>
@@ -2840,7 +2840,7 @@ const Preview = ({headerColor}) => {
               />
             </div>
             <div className="skills-summary mb-5">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5">Skills Summary</h2>
+              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5" style={{ color: headerColor }}>Skills Summary</h2>
               <ul className="list-none p-0">
                 <Droppable droppableId="skills" type="SKILLS">
                   {(provided) => (
@@ -2875,19 +2875,13 @@ const Preview = ({headerColor}) => {
           </div>
           <div className="right-column flex-1 p-5">
             <div className="experience mb-5">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5">Experience</h2>
+              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5" style={{ color: headerColor }}>Experience</h2>
               <div className="experience-item mb-4">
                 {resumeData.workExperience.length > 0 && (
                   <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
                     {(provided) => (
                       <div {...provided.droppableProps} ref={provided.innerRef}>
-                        <h2
-                          className="section-title mb-1 border-b-2 border-gray-300 editable"
-                          contentEditable
-                          suppressContentEditableWarning
-                        >
-                          Work Experience
-                        </h2>
+                      
                         {resumeData.workExperience.map((item, index) => (
                           <Draggable
                             key={`${item.company}-${index}`}
@@ -2976,7 +2970,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }}  >
                           Projects
                         </h2>
                         {resumeData.projects.map((item, index) => (
@@ -3072,7 +3066,7 @@ const Preview = ({headerColor}) => {
 
             </div>
             <div className="education">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5">Education</h2>
+              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5" style={{ color: headerColor }}>Education</h2>
               {resumeData.education.length > 0 && (
                 <div className="mb-1">
                   {resumeData.education.map((item, index) => (
@@ -3106,7 +3100,7 @@ const Preview = ({headerColor}) => {
             className="rounded-full mr-5"
           />
           <div className="flex-grow">
-            <h1 className="text-2xl text-gray-800">{resumeData.name}</h1>
+            <h1 className="text-2xl text-gray-800" style={{ color: headerColor }}>{resumeData.name}</h1>
             <h2 className="text-xl text-blue-600 font-semibold">{resumeData.position}</h2>
           </div>
           <div className="text-right">
@@ -3124,7 +3118,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4">Work Experience</h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Work Experience</h3>
           <div className="mb-4">
             {resumeData.workExperience.length > 0 && (
               <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
@@ -3218,7 +3212,7 @@ const Preview = ({headerColor}) => {
                       className="section-title mb-1 border-b-2 border-gray-300 editable"
                       contentEditable
                       suppressContentEditableWarning
-                    >
+                      style={{ color: headerColor }} >
                       Projects
                     </h2>
                     {resumeData.projects.map((item, index) => (
@@ -3313,13 +3307,13 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4">Snapshot</h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Snapshot</h3>
           {resumeData.summary}
           {/* Add more snapshot paragraphs as needed */}
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4">Technical Skills</h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Technical Skills</h3>
           <div className="bg-blue-600 text-white text-center py-2 rounded-md mb-2 text-sm font-semibold">
             <Droppable droppableId="skills" type="SKILLS">
               {(provided) => (
@@ -3353,7 +3347,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4">Certificates</h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Certificates</h3>
           <div className="mb-2">
             <Certification className="text-lg text-gray-800 font-semibold"
               title="Certifications "
@@ -3364,7 +3358,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div>
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4">Skills</h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Skills</h3>
           <div className="flex flex-wrap">
             <div className="w-1/2 mb-2">
               <Language title="Languages" languages={resumeData.languages} />
@@ -3378,7 +3372,7 @@ const Preview = ({headerColor}) => {
 
     template13: (
       <div className="w-4/5 mx-auto my-5 bg-white p-5 shadow-md">
-        <h1 className="text-4xl font-bold text-red-800 mb-2">{resumeData.name}({resumeData.position})</h1>
+        <h1 className="text-4xl font-bold text-red-800 mb-2" style={{ color: headerColor }}>{resumeData.name}({resumeData.position})</h1>
         <div className="text-sm mb-5">
           <p>
           <ContactInfo
@@ -3396,12 +3390,11 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-5">
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3">Professional Summary</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Professional Summary</div>
           <p>{resumeData.summary}</p>
         </div>
 
         <div className="mb-5">
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3">Websites, Portfolios, Profiles</div>
           <p>
           {resumeData.socialMedia.map((socialMedia, index) => {
                   return (
@@ -3432,7 +3425,7 @@ const Preview = ({headerColor}) => {
 
         <div className="mb-5">
           
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3">Skills</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Skills</div>
           <ul className="list-disc ml-5">
          
           <Droppable droppableId="skills" type="SKILLS">
@@ -3467,7 +3460,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-5">
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3">Work History</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Work History</div>
           <div className="mb-5">
           {resumeData.workExperience.length > 0 && (
                   <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
@@ -3562,7 +3555,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }} >
                           Projects
                         </h2>
                         {resumeData.projects.map((item, index) => (
@@ -3656,7 +3649,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-5">
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3">Education</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Education</div>
           <ul className="list-none">
           {resumeData.education.length > 0 && (
                     <div className="mb-1">
@@ -3677,7 +3670,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-5">
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3">Languages/Certifications</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Languages/Certifications</div>
           <Language  languages={resumeData.languages} />
                 <Certification
                   
@@ -3700,8 +3693,8 @@ const Preview = ({headerColor}) => {
           />
           </div>
           <div className="flex-3 text-right pl-6">
-            <h1 className="text-3xl font-bold text-gray-800 m-0">{resumeData.name}</h1>
-            <h2 className="text-2xl text-gray-600 m-0">{resumeData.position}</h2>
+            <h1 className="text-3xl font-bold text-gray-800 m-0" style={{ color: headerColor }}>{resumeData.name}</h1>
+            <h2 className="text-2xl text-gray-600 m-0" style={{ color: headerColor }}>{resumeData.position}</h2>
             <p className="text-gray-500 mt-2">
             <ContactInfo
               mainclass=" gap-1 mb-1 contact"
@@ -3718,14 +3711,14 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Profile</h3>
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4" style={{ color: headerColor }}>Profile</h3>
           <p>
           {resumeData.summary}
           </p>
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Education</h3>
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4" style={{ color: headerColor }}>Education</h3>
           <ul className="list-none p-0">
           {resumeData.education.length > 0 && (
                     <div className="mb-1">
@@ -3746,7 +3739,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Skills</h3>
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4" style={{ color: headerColor }}>Skills</h3>
           <ul className="list-none p-0">
           <Droppable droppableId="skills" type="SKILLS">
                   {(provided) => (
@@ -3779,7 +3772,7 @@ const Preview = ({headerColor}) => {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Projects</h3>
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4" style={{ color: headerColor }}>Projects</h3>
           {resumeData.workExperience.length > 0 && (
                   <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
                     {(provided) => (
@@ -3873,7 +3866,7 @@ const Preview = ({headerColor}) => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                        >
+                          style={{ color: headerColor }} >
                           Projects
                         </h2>
                         {resumeData.projects.map((item, index) => (
@@ -3964,11 +3957,11 @@ const Preview = ({headerColor}) => {
                   </Droppable>
                 )}
         </div>
-        <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Languages</h3>
+        <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4" style={{ color: headerColor }}>Languages</h3>
         <div className="mb-5">
          
           <Language  languages={resumeData.languages} />
-          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4">Certifications</h3>
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4" style={{ color: headerColor }}>Certifications</h3>
                 <Certification
                   
                   certifications={resumeData.certifications}
@@ -3976,6 +3969,295 @@ const Preview = ({headerColor}) => {
         </div>
       </div>
  
+    </div>
+    ),
+    template15: (
+<div className="max-w-3xl mx-auto p-5 bg-white shadow-md">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-4" style={{ color: headerColor }}>{resumeData.name}</h1>
+        <h2 className="text-2xl font-semibold mb-3" style={{ color: headerColor }}>{resumeData.position}</h2>
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-xl font-bold mb-4" style={{ color: headerColor }}>ABOUT ME</h2>
+        <p>
+        {resumeData.summary}
+        </p>
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-xl font-bold mb-4" style={{ color: headerColor }}>EXPERIENCE</h2>
+        <div>
+          <h3 className="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4" style={{ color: headerColor }}>Projects</h3>
+          {resumeData.workExperience.length > 0 && (
+                  <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
+                    {(provided) => (
+                      <div {...provided.droppableProps} ref={provided.innerRef}>
+                       
+                        {resumeData.workExperience.map((item, index) => (
+                          <Draggable
+                            key={`${item.company}-${index}`}
+                            draggableId={`WORK_EXPERIENCE-${index}`}
+                            index={index}
+                          >
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                  "outline-dashed outline-2 outline-gray-400 bg-white"
+                                  }`}
+                              >
+                                <div className="justify-between space-y-1">
+                                  <p className="content i-bold text-2xl" style={{ fontSize: '1.3rem' }}>{item.company}</p>
+                                  <DateRange
+                                    startYear={item.startYear}
+                                    endYear={item.endYear}
+                                    id={`work-experience-start-end-date`}
+                                  />
+                                </div>
+                                <p className="content">{item.position}</p>
+                                <p className="content hyphens-auto">
+                                  {item.description}
+                                </p>
+                                <Droppable
+                                  droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
+                                  type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
+                                >
+                                  {(provided) => (
+                                    <ul
+                                      className="list-disc ul-padding content"
+                                      {...provided.droppableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      {typeof item.keyAchievements === "string" &&
+                                        item.keyAchievements
+                                          .split("\n")
+                                          .map((achievement, subIndex) => (
+                                            <Draggable
+                                              key={`${item.company}-${index}-${subIndex}`}
+                                              draggableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}-${subIndex}`}
+                                              index={subIndex}
+                                            >
+                                              {(provided, snapshot) => (
+                                                <li
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                  className={`
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          ${snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                    }`}
+                                                >
+                                                  <div
+                                                    dangerouslySetInnerHTML={{
+                                                      __html: achievement,
+                                                    }}
+                                                    contentEditable
+                                                  />
+                                                </li>
+                                              )}
+                                            </Draggable>
+                                          ))}
+                                      {provided.placeholder}
+                                    </ul>
+                                  )}
+                                </Droppable>
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                )}
+                {resumeData.projects.length > 0 && (
+                  <Droppable droppableId="projects" type="PROJECTS">
+                    {(provided) => (
+                      <div {...provided.droppableProps} ref={provided.innerRef}>
+                        <h2
+                          className="section-title mb-1 border-b-2 border-gray-300 editable"
+                          contentEditable
+                          suppressContentEditableWarning
+                          style={{ color: headerColor }} >
+                          Projects
+                        </h2>
+                        {resumeData.projects.map((item, index) => (
+                          <Draggable
+                            key={`${item.name}-${index}`}
+                            draggableId={`PROJECTS-${index}`}
+                            index={index}
+                          >
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                  "outline-dashed outline-2 outline-gray-400 bg-white"
+                                  }`}
+                              >
+                                <div className="flex flex-row justify-between space-y-1">
+                                  <p className="content i-bold">{item.name}</p>
+                                  <DateRange
+                                    startYear={item.startYear}
+                                    endYear={item.endYear}
+                                    id={`work-experience-start-end-date`}
+                                  />
+                                </div>
+                                <Link
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="content"
+                                >
+                                  {item.link}
+                                </Link>
+                                <p className="content">{item.description}</p>
+                                <Droppable
+                                  droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
+                                  type="PROJECTS_KEY_ACHIEVEMENT"
+                                >
+                                  {(provided) => (
+                                    <ul
+                                      className="list-disc ul-padding content"
+                                      {...provided.droppableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      {typeof item.keyAchievements === "string" &&
+                                        item.keyAchievements
+                                          .split("\n")
+                                          .map((achievement, subIndex) => (
+                                            <Draggable
+                                              key={`${item.name}-${index}-${subIndex}`}
+                                              draggableId={`PROJECTS_KEY_ACHIEVEMENT-${index}-${subIndex}`}
+                                              index={subIndex}
+                                            >
+                                              {(provided, snapshot) => (
+                                                <li
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                  className={`
+                                          hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          ${snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                    }`}
+                                                >
+                                                  <div
+                                                    dangerouslySetInnerHTML={{
+                                                      __html: achievement,
+                                                    }}
+                                                    contentEditable
+                                                  />
+                                                </li>
+                                              )}
+                                            </Draggable>
+                                          ))}
+                                      {provided.placeholder}
+                                    </ul>
+                                  )}
+                                </Droppable>
+                              </div>
+
+                            )}
+
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                )}
+        </div>
+       
+       
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-xl font-bold mb-4" style={{ color: headerColor }}>SKILLS</h2>
+       
+        <Droppable droppableId="skills" type="SKILLS">
+                  {(provided) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                      {resumeData.skills.map((skill, index) => (
+                        <Draggable
+                          key={`SKILLS-${index}`}
+                          draggableId={`SKILLS-${index}`}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                "outline-dashed outline-2 outline-gray-400 bg-white"
+                                }`}
+                            >
+                              <Skills title={skill.title} skills={skill.skills} />
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+        
+      
+       
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-xl font-bold mb-4" style={{ color: headerColor }}>LANGUAGE</h2>
+        <div className="flex justify-start mb-4 font-bold">
+        <Language  languages={resumeData.languages} />
+        </div>
+      </div>
+
+      
+
+      <div className="mb-8">
+        <h2 className="text-xl font-bold mb-4" style={{ color: headerColor }}>EDUCATION</h2>
+        <div className="mb-4">
+        <ul className="list-none p-0">
+          {resumeData.education.length > 0 && (
+                    <div className="mb-1">
+                      {resumeData.education.map((item, index) => (
+                        <div  key={index} className="mb-1 text-lg">
+                          <p className="content i-bold " style={{ fontSize: '1.3rem' }}>{item.degree}</p>
+                          <p className="content">{item.school}</p>
+                          <DateRange className="mb-1 text-lg"
+                            startYear={item.startYear}
+                            endYear={item.endYear}
+                            id={`education-start-end-date`}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+          </ul>
+          
+        </div>
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-xl font-bold mb-4" style={{ color: headerColor }}>CONTACT</h2>
+        <ContactInfo
+              mainclass=" gap-1 mb-1 contact"
+              linkclass="inline-flex items-center gap-1"
+              teldata={resumeData.contactInformation}
+              emaildata={resumeData.email}
+              addressdata={resumeData.address}
+              telicon={<MdPhone />}
+              emailicon={<MdEmail />}
+              addressicon={<MdLocationOn />}
+            />
+      </div>
     </div>
     ),
     // Add more templates here
