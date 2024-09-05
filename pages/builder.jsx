@@ -14,6 +14,7 @@ import Projects from "../components/form/Projects";
 import Education from "../components/form/Education";
 import dynamic from "next/dynamic";
 import Certification from "../components/form/certification";
+import ColorPicker from './ColorPicker';
 
 const ResumeContext = createContext(DefaultResumeData);
 
@@ -32,6 +33,9 @@ export default function Builder(props) {
   // current section index
   const [currentSection, setCurrentSection] = useState(0);
 
+  // selected font
+  const [selectedFont, setSelectedFont] = useState("Ubuntu");
+  const [headerColor, setHeaderColor] = useState('');
   // profile picture
   const handleProfilePicture = (e) => {
     const file = e.target.files[0];
@@ -77,6 +81,10 @@ export default function Builder(props) {
     setCurrentSection(index);
   };
 
+  const handleFontChange = (e) => {
+    setSelectedFont(e.target.value);
+  };
+
   return (
     <>
       <ResumeContext.Provider
@@ -85,6 +93,7 @@ export default function Builder(props) {
           setResumeData,
           handleProfilePicture,
           handleChange,
+          headerColor,
         }}
       >
         <Meta
@@ -93,15 +102,42 @@ export default function Builder(props) {
           keywords="ATS-friendly, Resume optimization, Keyword-rich resume, Applicant Tracking System, ATS resume builder, ATS resume templates, ATS-compliant resume, ATS-optimized CV, ATS-friendly format, ATS resume tips, Resume writing services, Career guidance, Job search in India, Resume tips for India, Professional resume builder, Cover letter writing, Interview preparation, Job interview tips, Career growth, Online job applications, resume builder, free resume builder, resume ats, best free resume builder, resume creator, resume cv, resume design, resume editor, resume maker"
         />
         <div className="flex justify-between bg-gray-200 p-2 px-5">
-                  <button type="button" onClick={handlePrevious} disabled={currentSection === 0} className="rounded-3xl px-10  bg-blue-950 text-white p-3">
-                    Previous
-                  </button>
-                  <button type="button" onClick={handleNext} disabled={currentSection === sections.length - 1} className="rounded-3xl px-10 font-bold bg-yellow-500 text-black p-3">
-                    Next
-                  </button>
-                </div>
-        <div className="f-col gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto">
-       
+          <button
+            type="button"
+            onClick={handlePrevious}
+            disabled={currentSection === 0}
+            className="rounded-3xl px-10 bg-blue-950 text-white p-3"
+          >
+            Previous
+          </button>
+
+          {/* Font Selection Dropdown */}
+          <select
+            value={selectedFont}
+            onChange={handleFontChange}
+            className="rounded-3xl px-10 font-bold bg-white text-black p-3"
+          >
+            <option value="Ubuntu">Ubuntu</option>
+            <option value="Calibri">Calibri</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Poppins">Poppins</option>
+          </select>
+          <div className="flex justify-between bg-gray-200 p-2 px-5">
+            {/* Add the ColorPicker component here */}
+            <ColorPicker selectedColor={headerColor} onChange={setHeaderColor} />
+          </div>
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={currentSection === sections.length - 1}
+            className="rounded-3xl px-10 font-bold bg-yellow-500 text-black p-3"
+          >
+            Next
+          </button>
+        </div>
+
+        <div className={`f-col gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto`} style={{ fontFamily: selectedFont }}>
           {!formClose && (
             <div className="flex w-full md:w-3/5">
               <aside className="w-1/5 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
@@ -109,7 +145,11 @@ export default function Builder(props) {
                   {sections.map((section, index) => (
                     <li
                       key={index}
-                      className={`p-2 cursor-pointer ${currentSection === index ? "bg-blue-950 rounded-lg text-white" : "bg-gray-200 text-black rounded-lg"}`}
+                      className={`p-2 cursor-pointer ${
+                        currentSection === index
+                          ? "bg-blue-950 rounded-lg text-white"
+                          : "bg-gray-200 text-black rounded-lg"
+                      }`}
                       onClick={() => handleSectionClick(index)}
                     >
                       {section.label}
@@ -117,9 +157,8 @@ export default function Builder(props) {
                   ))}
                 </ul>
               </aside>
-              <form className="p-4 bg-gra-200 exclude-print w-4/5 h-screen overflow-y-auto">
+              <form className="p-4 bg-gray-200 exclude-print w-4/5 h-screen overflow-y-auto">
                 {sections[currentSection].component}
-                
               </form>
             </div>
           )}
@@ -131,4 +170,5 @@ export default function Builder(props) {
     </>
   );
 }
+
 export { ResumeContext };
