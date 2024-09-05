@@ -12,17 +12,17 @@ const colors = [
   { name: 'Tuscan Yellow', value: '#f7c52b' },
 ];
 
-const ColorPicker = ({ selectedColor, onChange }) => {
+const ColorPickers = ({ selectmultiplecolor, onChange }) => {
   return (
     <div className="flex items-center">
-      <span>Text color: </span>
+      <span>Background: </span>
       <div className="flex space-x-2 ml-2">
         {colors.map((color, index) => (
           <div
             key={index}
             onClick={() => onChange(color.value)}
             className={`w-6 h-6 rounded-full cursor-pointer border ${
-              selectedColor === color.value ? 'border-black' : 'border-gray-300'
+                selectmultiplecolor === color.value ? 'border-black' : 'border-gray-300'
             }`}
             style={{ backgroundColor: color.value }}
           />
@@ -32,4 +32,4 @@ const ColorPicker = ({ selectedColor, onChange }) => {
   );
 };
 
-export default ColorPicker;
+export default ColorPickers;

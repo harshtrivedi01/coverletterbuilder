@@ -15,6 +15,7 @@ import Education from "../components/form/Education";
 import dynamic from "next/dynamic";
 import Certification from "../components/form/certification";
 import ColorPicker from './ColorPicker';
+import ColorPickers from "./ColorPickers";
 
 const ResumeContext = createContext(DefaultResumeData);
 
@@ -36,6 +37,7 @@ export default function Builder(props) {
   // selected font
   const [selectedFont, setSelectedFont] = useState("Ubuntu");
   const [headerColor, setHeaderColor] = useState('');
+  const [backgroundColorss, setBgColor] = useState('');
   // profile picture
   const handleProfilePicture = (e) => {
     const file = e.target.files[0];
@@ -94,6 +96,7 @@ export default function Builder(props) {
           handleProfilePicture,
           handleChange,
           headerColor,
+          backgroundColorss,
         }}
       >
         <Meta
@@ -126,6 +129,7 @@ export default function Builder(props) {
           <div className="flex justify-between bg-gray-200 p-2 px-5">
             {/* Add the ColorPicker component here */}
             <ColorPicker selectedColor={headerColor} onChange={setHeaderColor} />
+            <ColorPickers selectmultiplecolor={backgroundColorss} onChange={setBgColor} />
           </div>
           <button
             type="button"
