@@ -144,7 +144,7 @@ export default function Builder(props) {
         <div className={`f-col gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto`} style={{ fontFamily: selectedFont }}>
           {!formClose && (
             <div className="flex w-full md:w-3/5">
-              <aside className="w-1/5 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
+              <aside className="w-3/5 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
                 <ul className="space-y-2">
                   {sections.map((section, index) => (
                     <li
