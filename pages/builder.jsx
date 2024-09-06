@@ -15,6 +15,7 @@ import Education from "../components/form/Education";
 import dynamic from "next/dynamic";
 import Certification from "../components/form/certification";
 import ColorPicker from './ColorPicker';
+import ColorPickers from "./ColorPickers";
 
 const ResumeContext = createContext(DefaultResumeData);
 
@@ -36,6 +37,7 @@ export default function Builder(props) {
   // selected font
   const [selectedFont, setSelectedFont] = useState("Ubuntu");
   const [headerColor, setHeaderColor] = useState('');
+  const [backgroundColorss, setBgColor] = useState('');
   // profile picture
   const handleProfilePicture = (e) => {
     const file = e.target.files[0];
@@ -94,6 +96,7 @@ export default function Builder(props) {
           handleProfilePicture,
           handleChange,
           headerColor,
+          backgroundColorss,
         }}
       >
         <Meta
@@ -126,6 +129,7 @@ export default function Builder(props) {
           <div className="flex justify-between bg-gray-200 p-2 px-5">
             {/* Add the ColorPicker component here */}
             <ColorPicker selectedColor={headerColor} onChange={setHeaderColor} />
+            <ColorPickers selectmultiplecolor={backgroundColorss} onChange={setBgColor} />
           </div>
           <button
             type="button"
@@ -140,7 +144,7 @@ export default function Builder(props) {
         <div className={`f-col gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto`} style={{ fontFamily: selectedFont }}>
           {!formClose && (
             <div className="flex w-full md:w-3/5">
-              <aside className="w-1/5 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
+              <aside className="w-3/5 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
                 <ul className="space-y-2">
                   {sections.map((section, index) => (
                     <li
