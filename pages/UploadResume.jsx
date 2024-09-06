@@ -1,10 +1,14 @@
 import React, { useState, useContext } from "react";
-import Image from "next/image"; // Import the Image component
+import { useRouter } from "next/router";
+import Image from 'next/image'; // Ensure correct import
 import { ResumeContext } from "./builder";
+import GoogleDrive from '../public/assets/google-drive.png';
+import drag from '../public/assets/drag.png';
 
 const UploadResume = () => {
   const [file, setFile] = useState(null);
   const { resumeData, setResumeData } = useContext(ResumeContext);
+  const router = useRouter();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -14,65 +18,27 @@ const UploadResume = () => {
       return;
     }
 
-    if (selectedFile.size > 5000000) { // Example: limit file size to 5MB
+    if (selectedFile.size > 5000000) {
       console.error("File too large.");
       return;
     }
 
-    setFile(selectedFile); // Set the file for display
+    if (!selectedFile.name.endsWith('.pdf')) {
+      console.error("Invalid file type. Please upload a PDF file.");
+      return;
+    }
 
-    const reader = new FileReader();
+    setFile(selectedFile);
 
-    reader.onload = (event) => {
-      try {
-        const parsedData = JSON.parse(event.target.result);
-        setResumeData(parsedData);
-      } catch (error) {
-        console.error("Error parsing the resume file", error);
-      }
-    };
-
-    reader.onerror = () => {
-      console.error("File could not be read.");
-    };
-
-    reader.readAsText(selectedFile); // Read the file as text
+    // Placeholder for PDF file handling
+    console.log(`Uploaded file: ${selectedFile.name}`);
+    router.push("/builder");
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
-
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      const droppedFile = e.dataTransfer.files[0];
-
-      if (!droppedFile) {
-        console.error("No file dropped.");
-        return;
-      }
-
-      if (droppedFile.size > 5000000) {
-        console.error("Dropped file too large.");
-        return;
-      }
-
-      setFile(droppedFile); // Set the dropped file for preview
-
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        try {
-          const parsedData = JSON.parse(event.target.result);
-          setResumeData(parsedData);
-        } catch (error) {
-          console.error("Error parsing the dropped file", error);
-        }
-      };
-
-      reader.onerror = () => {
-        console.error("Dropped file could not be read.");
-      };
-
-      reader.readAsText(droppedFile); // Read the dropped file as text
+      handleFileChange({ target: { files: e.dataTransfer.files } });
     }
   };
 
@@ -80,9 +46,20 @@ const UploadResume = () => {
     e.preventDefault();
   };
 
-  // Trigger file input when Browse button is clicked
   const handleBrowseClick = () => {
     document.getElementById("fileUpload").click();
+  };
+
+  const handleNextClick = () => {
+    if (resumeData) {
+      router.push("/builder");
+    } else {
+      console.error("No resume data loaded.");
+    }
+  };
+
+  const handleBackClick = () => {
+    router.back(); // Navigate back to the previous page
   };
 
   return (
@@ -109,6 +86,7 @@ const UploadResume = () => {
               id="fileUpload"
               onChange={handleFileChange}
               className="hidden"
+              accept=".pdf"
             />
 
             <button
@@ -121,24 +99,30 @@ const UploadResume = () => {
 
           <div className="flex flex-col space-y-4 w-full md:w-1/3">
             <button className="flex items-center px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 w-full">
-              <Image src="/google-drive-icon.png" alt="Google Drive" width={24} height={24} className="mr-2" />
+              <Image src={GoogleDrive} width={24} height={24} alt="Google Drive" />
               <span className="text-gray-700 whitespace-nowrap">Google Drive</span>
             </button>
             <button className="flex items-center px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 w-full">
-              <Image src="/dropbox-icon.png" alt="Dropbox" width={24} height={24} className="mr-2" />
+              <Image src={drag} alt="Dropbox" width={24} height={24} />
               <span className="text-gray-700 whitespace-nowrap">Dropbox</span>
             </button>
           </div>
         </div>
 
-        <p className="text-gray-500 text-sm mt-4">Files we can read: DOC, DOCX, PDF, HTML, RTF, TXT</p>
+        <p className="text-gray-500 text-sm mt-4">Files we can read: PDF</p>
       </div>
 
       <div className="mt-6 w-full max-w-screen-lg px-4 flex justify-between">
-        <button className="w-1/3 px-6 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+        <button
+          className="w-1/3 px-6 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100"
+          onClick={handleBackClick}
+        >
           Back
         </button>
-        <button className="w-1/3 px-6 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500">
+        <button
+          className="w-1/3 px-6 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500"
+          onClick={handleNextClick}
+        >
           Next
         </button>
       </div>

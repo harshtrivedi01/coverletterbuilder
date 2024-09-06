@@ -15,7 +15,7 @@ const UploadResume = () => {
       if (selectedCard === 'upload') {
         router.push('/UploadResume'); // Redirect to the UploadResume page
       } else if (selectedCard === 'start') {
-        router.push('/preview'); // Redirect to the index page
+        router.push('/builder'); // Redirect to the index page
       }
     } else {
       alert('Please select a card before proceeding.');

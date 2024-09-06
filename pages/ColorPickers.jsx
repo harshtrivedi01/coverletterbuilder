@@ -17,16 +17,21 @@ const ColorPickers = ({ selectmultiplecolor, onChange }) => {
     <div className="flex items-center">
       <span>Background: </span>
       <div className="flex space-x-2 ml-2">
-        {colors.map((color, index) => (
-          <div
-            key={index}
-            onClick={() => onChange(color.value)}
-            className={`w-6 h-6 rounded-full cursor-pointer border ${
+        {colors.map((color, index) => {
+          // Ensure style is always a valid object with a consistent default
+          const style = color.value ? { backgroundColor: color.value } : { backgroundColor: 'transparent' };
+
+          return (
+            <div
+              key={index}
+              onClick={() => onChange(color.value)}
+              className={`w-6 h-6 rounded-full cursor-pointer border ${
                 selectmultiplecolor === color.value ? 'border-black' : 'border-gray-300'
-            }`}
-            style={{ backgroundColor: color.value }}
-          />
-        ))}
+              }`}
+              style={style}
+            />
+          );
+        })}
       </div>
     </div>
   );

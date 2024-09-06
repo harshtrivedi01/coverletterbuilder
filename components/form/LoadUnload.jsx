@@ -1,31 +1,44 @@
 import { FaCloudUploadAlt, FaCloudDownloadAlt } from "react-icons/fa";
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
+import jsPDF from 'jspdf';
 
 const LoadUnload = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
 
-  // load backup resume data
+  // Load backup resume data
   const handleLoad = (event) => {
     const file = event.target.files[0];
+    if (!file) return;
+
     const reader = new FileReader();
     reader.onload = (event) => {
-      const resumeData = JSON.parse(event.target.result);
-      setResumeData(resumeData);
+      try {
+        const parsedData = JSON.parse(event.target.result);
+        setResumeData(parsedData);
+        alert('Data loaded successfully!');
+      } catch (error) {
+        alert('Failed to load data. Please check the file format.');
+      }
     };
     reader.readAsText(file);
   };
 
-  // download resume data
+  // Download resume data as PDF
   const handleDownload = (data, filename, event) => {
     event.preventDefault();
-    const jsonData = JSON.stringify(data);
-    const blob = new Blob([jsonData], { type: "application/json" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    link.click();
+    try {
+      const doc = new jsPDF();
+      doc.text('Resume Data:', 10, 10);
+      doc.text(JSON.stringify(data, null, 2), 10, 20);
+      doc.save(filename);
+      alert('Data saved successfully!');
+    } catch (error) {
+      alert('Failed to save data. Please try again.');
+    }
   };
+
+  const filename = resumeData.name ? `${resumeData.name} by ATSResume.pdf` : 'resumeData.pdf';
 
   return (
     <div className="flex flex-wrap gap-4 mb-2 justify-center">
@@ -48,11 +61,7 @@ const LoadUnload = () => {
           aria-label="Save Data"
           className="p-2 text-black bg-yellow-500 rounded"
           onClick={(event) =>
-            handleDownload(
-              resumeData,
-              resumeData.name + " by ATSResume.json",
-              event
-            )
+            handleDownload(resumeData, filename, event)
           }
         >
           <FaCloudDownloadAlt className="text-[1.2rem] text-black" />
