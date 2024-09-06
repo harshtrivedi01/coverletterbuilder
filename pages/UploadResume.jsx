@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import Image from "next/image"; // Import the Image component
 import { ResumeContext } from "./builder";
 
 const UploadResume = () => {
@@ -120,11 +121,11 @@ const UploadResume = () => {
 
           <div className="flex flex-col space-y-4 w-full md:w-1/3">
             <button className="flex items-center px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 w-full">
-              <img src="/google-drive-icon.png" alt="" className="w-6 h-6 mr-2" />
+              <Image src="/google-drive-icon.png" alt="Google Drive" width={24} height={24} className="mr-2" />
               <span className="text-gray-700 whitespace-nowrap">Google Drive</span>
             </button>
             <button className="flex items-center px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 w-full">
-              <img src="/dropbox-icon.png" alt="" className="w-6 h-6 mr-2" />
+              <Image src="/dropbox-icon.png" alt="Dropbox" width={24} height={24} className="mr-2" />
               <span className="text-gray-700 whitespace-nowrap">Dropbox</span>
             </button>
           </div>

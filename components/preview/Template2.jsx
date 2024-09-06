@@ -19,6 +19,8 @@ import {
   } from "react-icons/fa";
   import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
   import dynamic from "next/dynamic";
+  import Image from "next/image";
+  import Link from "next/link";
   // Importing draggable components dynamically
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
@@ -34,7 +36,15 @@ const Template1 = () => {
         { name: "youtube", icon: <FaYoutube /> },
         { name: "website", icon: <CgWebsite /> },
       ];
-    
+      const MenuButton = ({ title, icon, onClick }) => (
+        <button
+          onClick={onClick}
+          title={title}
+          className="flex items-center justify-center p-3 hover:bg-gray-200 rounded font-semibold text-lg"
+        >
+          {icon}
+        </button>
+      );
   return (
     <div className=" border p-2">
     <A4PageWrapper>

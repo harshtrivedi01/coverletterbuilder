@@ -8,7 +8,7 @@ import DateRange from "../utility/DateRange";
 import Language from "./Language";
 import Skills from "./Skills";
 import Certification from "./Certification";
-import Image from "next/image";
+import Link from "next/link";
 import {
     FaGithub,
     FaLinkedin,

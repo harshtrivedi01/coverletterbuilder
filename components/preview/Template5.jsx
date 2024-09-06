@@ -8,6 +8,7 @@ import DateRange from "../utility/DateRange";
 import Language from "./Language";
 import Skills from "./Skills";
 import Certification from "./Certification";
+import Image from "next/image";
 import {
     FaGithub,
     FaLinkedin,
@@ -19,6 +20,7 @@ import {
   } from "react-icons/fa";
   import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
   import dynamic from "next/dynamic";
+  import Link from "next/link";
   // Importing draggable components dynamically
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
