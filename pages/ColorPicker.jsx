@@ -17,16 +17,21 @@ const ColorPicker = ({ selectedColor, onChange }) => {
     <div className="flex items-center">
       <span>Text color: </span>
       <div className="flex space-x-2 ml-2">
-        {colors.map((color, index) => (
-          <div
-            key={index}
-            onClick={() => onChange(color.value)}
-            className={`w-6 h-6 rounded-full cursor-pointer border ${
-              selectedColor === color.value ? 'border-black' : 'border-gray-300'
-            }`}
-            style={{ backgroundColor: color.value }}
-          />
-        ))}
+        {colors.map((color, index) => {
+          // Ensure style is always a valid object
+          const style = color.value ? { backgroundColor: color.value } : { backgroundColor: 'transparent' };
+          
+          return (
+            <div
+              key={index}
+              onClick={() => onChange(color.value)}
+              className={`w-6 h-6 rounded-full cursor-pointer border ${
+                selectedColor === color.value ? 'border-black' : 'border-gray-300'
+              }`}
+              style={style}
+            />
+          );
+        })}
       </div>
     </div>
   );
