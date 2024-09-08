@@ -144,3 +144,35 @@
         z-index: -1;
     }
 }
+
+/* styles/globals.css or a dedicated CSS file */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(2.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(2.95);
+    }
+  }
+  
+  .transition-fade-in {
+    animation: fadeIn 2.3s ease-in-out;
+  }
+  
+  .transition-fade-out {
+    animation: fadeOut 3.3s ease-in-out;
+  }
+  
