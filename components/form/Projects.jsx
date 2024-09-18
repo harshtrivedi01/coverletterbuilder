@@ -37,7 +37,7 @@ const Projects = () => {
 
   return (
     <div className="flex-col-gap-2 mt-10">
-      <h2 className="input-title text-black">Projects</h2>
+      <h2 className="input-title text-black  text-3xl">Projects</h2>
       {resumeData.projects.map((project, index) => (
         <div key={index} className="f-col">
           <input

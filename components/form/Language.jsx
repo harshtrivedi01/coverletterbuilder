@@ -26,14 +26,14 @@ const Language = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">{title}</h2>
+      <h2 className="input-title text-black  text-3xl">{title || "Language"}</h2>
       {resumeData[skillType].map((skill, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
             placeholder={placeholder}
             name="skill"
-            className="w-full other-input"
+            className="w-full other-input border border-black"
             value={skill}
             onChange={(e) => handleSkills(e, index, skillType)}
           />

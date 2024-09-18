@@ -37,7 +37,7 @@ const Template7 = () => {
       ];
     
   return (
-    <div className=" mx-auto bg-white p-5">
+    <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
 
 
     <section className="flex justify-between">

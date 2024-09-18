@@ -4,7 +4,17 @@ const Summary = () => {
   const { resumeData, setResumeData, handleChange } = useContext(ResumeContext);
   return (
     <div className="flex-col-gap-2 mt-10">
-      <h2 className="input-title text-black">Summary</h2>
+      <div className="flex justify-between mb-2">
+      <h2 className="input-title text-black  text-3xl">Summary</h2>
+            <button
+              type="button"
+              className="border bg-black text-white px-3 rounded-3xl"
+            
+            >
+              + AI Assist
+            </button>
+          </div>
+    
       <div className="grid-4">
         <textarea
           placeholder="Summary"

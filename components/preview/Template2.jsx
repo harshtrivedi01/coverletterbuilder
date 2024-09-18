@@ -17,10 +17,12 @@ import {
     FaYoutube, FaBold, FaItalic, FaPlus, FaMinus, FaAlignLeft, FaAlignCenter, FaAlignRight,FaLink,
     FaUnderline,
   } from "react-icons/fa";
-  import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
+  import { MdEmail, MdLocationOn, MdPhone, MdPictureAsPdf } from "react-icons/md";
   import dynamic from "next/dynamic";
   import Image from "next/image";
   import Link from "next/link";
+  const html2pdf = dynamic(() => import("html2pdf.js"), { ssr: false });
+
   // Importing draggable components dynamically
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
@@ -45,8 +47,17 @@ const Template1 = () => {
           {icon}
         </button>
       );
+
+      const downloadPDF = async () => {
+        const element = document.querySelector(".w");
+        const html2pdfModule = (await import("html2pdf.js")).default; // Dynamically load the module in client-side
+    
+        html2pdfModule()
+          .from(element)
+          .save("resume.pdf");
+      };
   return (
-    <div className=" border p-2">
+    <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
     <A4PageWrapper>
       <HighlightMenu
         styles={{
@@ -445,22 +456,29 @@ const Template1 = () => {
       </div>
 
     </A4PageWrapper>
+
+   
   </div>
   );
 };
 
 const A4PageWrapper = ({ children }) => {
-    const alertA4Size = () => {
-      const preview = document.querySelector(".preview");
+  const alertA4Size = () => {
+    const preview = document.querySelector(".preview");
+    if (preview) {
       const previewHeight = preview.offsetHeight;
       console.log(previewHeight);
       if (previewHeight > 1122) {
         alert("A4 size exceeded");
       }
-    };
+    } else {
+      console.error("Element with class 'preview' not found.");
+    }
+  };
+  
   
     return (
-      <div className="w-8.5in border p-3" onLoad={alertA4Size}>
+      <div className="w p-5" onLoad={alertA4Size}>
         {children}
       </div>
     );

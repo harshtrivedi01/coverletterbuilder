@@ -30,7 +30,7 @@ const Education = () => {
     
     return (
       <div className="flex-col-gap-2 mt-10">
-        <h2 className="input-title text-black">Education</h2>
+        <h2 className="input-title text-black  text-3xl">Education</h2>
         {resumeData.education.map((education, index) => (
           <div key={index} className="f-col">
             <input

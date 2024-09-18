@@ -38,7 +38,7 @@ const Template11 = () => {
     ];
 
     return (
-        <div className="container mx-auto my-12 bg-white shadow-lg overflow-hidden w-full ">
+      <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
         <div className="header flex bg-[#2b3d63] text-white p-5 items-center" style={{ backgroundColor: backgroundColorss }}>
           <div className="profile-pic mr-5">
             {/* <img

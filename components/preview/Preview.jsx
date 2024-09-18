@@ -5,16 +5,24 @@ import {
   FaTwitter,
   FaFacebook,
   FaInstagram,
-  FaYoutube, FaBold, FaItalic, FaPlus, FaMinus, FaAlignLeft, FaAlignCenter, FaAlignRight,FaLink,
+  FaYoutube,
+  FaBold,
+  FaItalic,
+  FaPlus,
+  FaMinus,
+  FaAlignLeft,
+  FaAlignCenter,
+  FaAlignRight,
+  FaLink,
   FaUnderline,
+  FaSpellCheck, // Added grammar check icon
 } from "react-icons/fa";
 
 import { CgWebsite } from "react-icons/cg";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ResumeContext } from "../../pages/builder";
 import dynamic from "next/dynamic";
-
 import { HighlightMenu } from "react-highlight-menu";
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
 import Template1 from "./Template1";
@@ -34,14 +42,53 @@ import Template14 from "./Template14";
 import Template15 from "./Template15";
 
 // Importing draggable components dynamically
-const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
-const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
-const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false });
+const DragDropContext = dynamic(
+  () => import("react-beautiful-dnd").then((mod) => mod.DragDropContext),
+  { ssr: false }
+);
+const Droppable = dynamic(
+  () => import("react-beautiful-dnd").then((mod) => mod.Droppable),
+  { ssr: false }
+);
+const Draggable = dynamic(
+  () => import("react-beautiful-dnd").then((mod) => mod.Draggable),
+  { ssr: false }
+);
 
-const Preview = () => {
-  const { resumeData, setResumeData,headerColor } = useContext(ResumeContext);
+// Function to check grammar using a hypothetical API
+const checkGrammar = () => {
+  const selectedText = window.getSelection().toString();
+
+  if (selectedText) {
+    // API call to the grammar correction service (example using LanguageTool API)
+    fetch("https://api.languagetool.org/v2/check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        language: "en-US",
+        text: selectedText,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.matches.length > 0) {
+          alert("Grammar issues found: " + data.matches.length);
+          // Extend this to show grammar correction suggestions to the user
+        } else {
+          alert("No grammar issues found!");
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  } else {
+    alert("Please select some text to check for grammar.");
+  }
+};
+
+const Preview = ({ selectedTemplate }) => {
+  const { resumeData, setResumeData } = useContext(ResumeContext);
   const [content, setContent] = useState(resumeData);
-  const [selectedTemplate, setSelectedTemplate] = useState('template1'); // State to hold the selected template
 
   const icons = [
     { name: "github", icon: <FaGithub /> },
@@ -53,72 +100,22 @@ const Preview = () => {
     { name: "website", icon: <CgWebsite /> },
   ];
 
-  // Sample templates
   const templates = {
-    template1: (
-  <div>
-    <Template1/>
-  </div>
-    ),
-
-    template2: (
-      <div>
-      <Template2/>
-      </div>
-    ),
-
-    template3: (
-     <div><Template3/></div>
-    ),
-
-    template4: (
-     <div>
-      <Template4/>
-     </div>
-    ),
-    template5: (
-
-      <div><Template5/></div>
-    ),
-    template6: (
-<div><Template6/></div>
-      
-    ),
-
-    template7: (
-     <div><Template7/></div>
-    ),
-
-    template8: (
-      <div><Template8/></div>
-    ),
-
-    template9: (
-      <div><Template9/></div>
-    ),
-
-    template10: (
-      <div><Template10/></div>
-    ),
-
-    template11: (
-     <div><Template11/></div>
-    ),
-
-    template12: (
-      <div><Template12/></div>
-    ),
-
-    template13: (
-     <div><Template13/></div>
-    ),
-    template14: (
-      <div><Template14/></div>
-    ),
-    template15: (
-<div><Template15/></div>
-    ),
-    // Add more templates here
+    template1: <Template1 />,
+    template2: <Template2 />,
+    template3: <Template3 />,
+    template4: <Template4 />,
+    template5: <Template5 />,
+    template6: <Template6 />,
+    template7: <Template7 />,
+    template8: <Template8 />,
+    template9: <Template9 />,
+    template10: <Template10 />,
+    template11: <Template11 />,
+    template12: <Template12 />,
+    template13: <Template13 />,
+    template14: <Template14 />,
+    template15: <Template15 />,
   };
 
   const onDragEnd = (result) => {
@@ -142,12 +139,10 @@ const Preview = () => {
     if (source.droppableId.includes("WORK_EXPERIENCE_KEY_ACHIEVEMENT")) {
       const newWorkExperience = [...resumeData.workExperience];
       const workExperienceIndex = parseInt(source.droppableId.split("-")[1]);
-      const keyAchievements =
-        newWorkExperience[workExperienceIndex].keyAchievements.split("\n");
+      const keyAchievements = newWorkExperience[workExperienceIndex].keyAchievements.split("\n");
       const [removed] = keyAchievements.splice(source.index, 1);
       keyAchievements.splice(destination.index, 0, removed);
-      newWorkExperience[workExperienceIndex].keyAchievements =
-        keyAchievements.join("\n");
+      newWorkExperience[workExperienceIndex].keyAchievements = keyAchievements.join("\n");
       setResumeData({ ...resumeData, workExperience: newWorkExperience });
     }
 
@@ -168,8 +163,7 @@ const Preview = () => {
     if (source.droppableId.includes("PROJECTS_KEY_ACHIEVEMENT")) {
       const newProjects = [...resumeData.projects];
       const projectIndex = parseInt(source.droppableId.split("-")[1]);
-      const keyAchievements =
-        newProjects[projectIndex].keyAchievements.split("\n");
+      const keyAchievements = newProjects[projectIndex].keyAchievements.split("\n");
       const [removed] = keyAchievements.splice(source.index, 1);
       keyAchievements.splice(destination.index, 0, removed);
       newProjects[projectIndex].keyAchievements = keyAchievements.join("\n");
@@ -186,43 +180,29 @@ const Preview = () => {
       {icon}
     </button>
   );
-  
+
   const formatText = (command, value = null) => {
     document.execCommand(command, false, value);
   };
-  
-  const toggleBold = () => formatText('bold');
-  const toggleItalic = () => formatText('italic');
-  const toggleUnderline = () => formatText('underline');
-  const changeFontSize = (size) => formatText('fontSize', size);
+
+  const toggleBold = () => formatText("bold");
+  const toggleItalic = () => formatText("italic");
+  const toggleUnderline = () => formatText("underline");
+  const changeFontSize = (size) => formatText("fontSize", size);
   const alignText = (alignment) => formatText(`justify${alignment}`);
   const toggleLink = () => {
     const url = prompt("Enter the URL:");
     if (url) {
-      formatText('createLink', url);
+      formatText("createLink", url);
     }
   };
-  
-  useKeyboardShortcut('b', true, toggleBold);
-  useKeyboardShortcut('i', true, toggleItalic);
-  useKeyboardShortcut('u', true, toggleUnderline);
-  
+
+  useKeyboardShortcut("b", true, toggleBold);
+  useKeyboardShortcut("i", true, toggleItalic);
+  useKeyboardShortcut("u", true, toggleUnderline);
+
   return (
-    <div className="md:max-w-[60%] sticky top-0 preview rm-padding-print p-6 md:overflow-y-scroll md:h-screen">
-      <div className="mb-4">
-        <select
-          value={selectedTemplate}
-          onChange={(e) => setSelectedTemplate(e.target.value)}
-          className="p-2 border rounded"
-        >
-          {Object.keys(templates).map((templateKey) => (
-            <option key={templateKey} value={templateKey}>
-              {templateKey}
-            </option>
-          ))}
-        </select>
-      </div>
-  
+    <div>
       <A4PageWrapper>
         <HighlightMenu
           styles={{
@@ -230,7 +210,7 @@ const Preview = () => {
             backgroundColor: "#C026D3",
             boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
             zIndex: 10,
-             borderRadius: "5px",
+            borderRadius: "5px",
             padding: "3px",
           }}
           target="body"
@@ -264,22 +244,28 @@ const Preview = () => {
               <MenuButton
                 title="Align Left"
                 icon={<FaAlignLeft />}
-                onClick={() => alignText('Left')}
+                onClick={() => alignText("Left")}
               />
               <MenuButton
                 title="Align Center"
                 icon={<FaAlignCenter />}
-                onClick={() => alignText('Center')}
+                onClick={() => alignText("Center")}
               />
               <MenuButton
                 title="Align Right"
                 icon={<FaAlignRight />}
-                onClick={() => alignText('Right')}
+                onClick={() => alignText("Right")}
               />
-              <MenuButton className="mx-3"
+              <MenuButton
                 title="Add Link"
                 icon={<FaLink />}
                 onClick={toggleLink}
+              />
+              {/* Grammar Check Button */}
+              <MenuButton
+                title="Check Grammar"
+                icon={<FaSpellCheck />}
+                onClick={checkGrammar}
               />
             </>
           )}
@@ -295,22 +281,22 @@ const Preview = () => {
 const A4PageWrapper = ({ children }) => {
   const alertA4Size = () => {
     const preview = document.querySelector(".preview");
-    const previewHeight = preview.offsetHeight;
-    console.log(previewHeight);
-    if (previewHeight > 1122) {
-      alert("A4 size exceeded");
+    if (preview) {
+      const previewHeight = preview.offsetHeight;
+      console.log(previewHeight);
+      if (previewHeight > 1122) {
+        alert("A4 size exceeded");
+      }
+    } else {
+      console.error("Element with class 'preview' not found.");
     }
   };
 
   return (
-    <div className="w-8.5in border p-3" onLoad={alertA4Size}>
+    <div className="m-3" onLoad={alertA4Size}>
       {children}
     </div>
   );
-
 };
-
-
-
 
 export default Preview;

@@ -18,6 +18,7 @@ import {
     FaInstagram,
     FaYoutube, FaBold, FaItalic, FaPlus, FaMinus, FaAlignLeft, FaAlignCenter, FaAlignRight,FaLink,
     FaUnderline,
+    FaSpellCheck,
   } from "react-icons/fa";
   import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
   import dynamic from "next/dynamic";
@@ -25,6 +26,39 @@ import {
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
 const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false })
+
+const checkGrammar = () => {
+  const selectedText = window.getSelection().toString();
+
+  if (selectedText) {
+    // API call to the grammar correction service (example using LanguageTool API)
+    fetch("https://api.languagetool.org/v2/check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        language: "en-US",
+        text: selectedText,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.matches.length > 0) {
+          alert("Grammar issues found: " + data.matches.length);
+          // Extend this to show grammar correction suggestions to the user
+        } else {
+          alert("No grammar issues found!");
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  } else {
+    alert("Please select some text to check for grammar.");
+  }
+};
+
+
+
 const Template1 = () => {
     const { resumeData, setResumeData,headerColor,backgroundColorss } = useContext(ResumeContext);
     const icons = [
@@ -58,9 +92,9 @@ const Template1 = () => {
     }
   };
   return (
-    <div>
-     <div>
-        <h1 style={{ color: headerColor }}>Template 1</h1>
+    <div className="">
+     <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
+      {/* <h1 style={{ color: headerColor }}>Template 1</h1>*/}  
         <div className="">
           <A4PageWrapper >
             <HighlightMenu
@@ -116,12 +150,18 @@ const Template1 = () => {
                     icon={<FaAlignRight />}
                     onClick={() => alignText('Right')}
                   />
+                    <MenuButton
+                title="Check Grammar"
+                icon={<FaSpellCheck />}
+                onClick={checkGrammar}
+              />
                 </>
               )}
             />
 
             <div className="f-col items-center mb-1" >
-              {resumeData.profilePicture.length > 0 && (
+            {resumeData?.profilePicture && resumeData.profilePicture.length > 0 && (
+              
                 <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-black">
                   <Image
                     src={resumeData.profilePicture}
@@ -145,7 +185,8 @@ const Template1 = () => {
                 addressicon={<MdLocationOn />}
               />
               <div className="grid grid-cols-3 gap-1">
-                {resumeData.socialMedia.map((socialMedia, index) => {
+              {Array.isArray(resumeData?.socialMedia) ? (
+    resumeData.socialMedia.map((socialMedia, index) => {
                   return (
                     <a
                       href={`http://${socialMedia.link}`}
@@ -167,15 +208,20 @@ const Template1 = () => {
                       })}
                       {socialMedia.link}
                     </a>
-                  );
-                })}
+                 );
+                })
+              ) : (
+                <p>No social media links available</p> // Fallback content
+              )}
+                
               </div>
             </div>
             <hr className="border-dashed my-2" />
             {/* two column start */}
             <div className="grid grid-cols-3 gap-6" >
               <div className="col-span-1 space-y-2" style={{ backgroundColor: backgroundColorss }}>
-                {resumeData.summary.length > 0 && (
+              {resumeData?.summary && resumeData.summary.length > 0 && (
+
                   <div className="mb-1">
                     <h2 style={{ color: headerColor }} className="section-title mb-1 border-b-2 border-gray-300">
                       Summary
@@ -184,7 +230,7 @@ const Template1 = () => {
                   </div>
                 )}
                 <div>
-                  {resumeData.education.length > 0 && (
+                  { resumeData?.education &&resumeData.education.length > 0 && (
                     <div className="mb-1">
                       <h2 style={{ color: headerColor }} className="section-title mb-1 border-b-2 border-gray-300">
                         Education
@@ -206,7 +252,8 @@ const Template1 = () => {
                 <Droppable droppableId="skills" type="SKILLS">
                   {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
-                      {resumeData.skills.map((skill, index) => (
+                     {Array.isArray(resumeData?.skills) ? (
+    resumeData.skills.map((skill, index) => (
                         <Draggable
                           key={`SKILLS-${index}`}
                           draggableId={`SKILLS-${index}`}
@@ -225,7 +272,10 @@ const Template1 = () => {
                             </div>
                           )}
                         </Draggable>
-                      ))}
+                      ))
+                    ) : (
+                      <p>No skills available</p> // Fallback content if skills are undefined or not an array
+                    )}
                       {provided.placeholder}
                     </div>
                   )}
@@ -237,7 +287,7 @@ const Template1 = () => {
                 />
               </div>
               <div className="col-span-2 space-y-2">
-                {resumeData.workExperience.length > 0 && (
+                {resumeData?.workExperience &&resumeData.workExperience.length > 0 && (
                   <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
                     {(provided) => (
                       <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -328,7 +378,7 @@ const Template1 = () => {
                     )}
                   </Droppable>
                 )}
-                {resumeData.projects.length > 0 && (
+                {resumeData?.projects &&resumeData.projects.length > 0 && (
                   <Droppable droppableId="projects" type="PROJECTS">
                     {(provided) => (
                       <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -438,14 +488,19 @@ const Template1 = () => {
 };
 
 const A4PageWrapper = ({ children }) => {
-    const alertA4Size = () => {
-      const preview = document.querySelector(".preview");
+  const alertA4Size = () => {
+    const preview = document.querySelector(".preview");
+    if (preview) {
       const previewHeight = preview.offsetHeight;
       console.log(previewHeight);
       if (previewHeight > 1122) {
         alert("A4 size exceeded");
       }
-    };
+    } else {
+      console.error("Element with class 'preview' not found.");
+    }
+  };
+  
   
     return (
       <div className="w-8.5in border p-3" onLoad={alertA4Size}>

@@ -25,14 +25,14 @@ const Certification = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">{title}</h2>
+      <h2 className="input-title text-black  text-3xl">{title}</h2>
       {resumeData[skillType].map((skill, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
             placeholder={title}
             name={title}
-            className="w-full other-input"
+             className="w-full other-input border border-black"
             value={skill}
             onChange={(e) => handleSkills(e, index, skillType)}
           />

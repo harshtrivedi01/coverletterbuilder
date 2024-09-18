@@ -23,25 +23,25 @@ const UploadResume = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold mb-4">Are you uploading an existing resume?</h1>
-      <p className="text-gray-600 mb-8">Just review, edit, and update it with new information</p>
-      <div className="flex space-x-4">
+    <div className="flex flex-col items-center justify-center  bg-gray-100">
+      <h1 className="text-2xl font-bold mb-4 mt-32">Are you uploading an existing resume?</h1>
+      <p className="text-gray-600 mb-5">Just review, edit, and update it with new information</p>
+      <div className="flex space-x-4 my-10">
         <div
-          className={`border ${selectedCard === 'upload' ? 'border-green-500' : 'border-gray-300'} rounded-lg p-6 text-center w-64 shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}
+          className={`border ${selectedCard === 'upload' ? 'border-blue-500' : 'border-gray-300'} bg-white rounded-lg p-6 h-60 text-center w- shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}
           onClick={() => handleCardSelect('upload')}
         >
           <div className="mb-4">
-            <svg className="mx-auto h-12 w-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="mx-auto h-12 w-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4m-2 0v16m-4-8H4M4 8h16" />
             </svg>
           </div>
           <h2 className="text-lg font-semibold mb-2">Yes, upload from my resume</h2>
-          <p className="text-gray-500">We’ll give you expert guidance to fill out your info and enhance your resume, from start to finish</p>
+          <p className="text-gray-500">We’ll give you expert guidance to fill out your info and enhance your resume,<br/> from start to finish</p>
         </div>
 
         <div
-          className={`border ${selectedCard === 'start' ? 'border-blue-500' : 'border-gray-300'} rounded-lg p-6 text-center w-64 shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}
+          className={`border ${selectedCard === 'start' ? 'border-blue-500' : 'border-gray-300'} bg-white rounded-lg p-6 h-60 text-center  shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}
           onClick={() => handleCardSelect('start')}
         >
           <div className="mb-4">
@@ -53,9 +53,9 @@ const UploadResume = () => {
           <p className="text-gray-500">We’ll guide you through the whole process so your skills can shine</p>
         </div>
       </div>
-      <div className="flex space-x-4 mt-8">
-        <button className="px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Back</button>
-        <button className="px-6 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-500" onClick={handleNext}>Next</button>
+      <div className="flex justify-between my-8 w-full px-40 mb-28">
+        <button className="px-16 py-1 border-2 bg-white text-lg border-blue-800 text-blue-700 rounded-3xl hover:bg-gray-300">Back</button>
+        <button className="px-16 py-2 bg-yellow-400 text-lg rounded-3xl hover:bg-yellow-500" onClick={handleNext}>Next</button>
       </div>
     </div>
   );

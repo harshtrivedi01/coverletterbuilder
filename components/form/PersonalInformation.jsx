@@ -1,13 +1,40 @@
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
+
 const PersonalInformation = ({}) => {
   const { resumeData, setResumeData, handleProfilePicture, handleChange } =
     useContext(ResumeContext);
 
+  // Default dummy image URL (can be replaced with any placeholder image)
+  const dummyImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s"; // URL to the dummy image
+
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title text-black">Personal Information</h2>
+      <h2 className="input-title text-black text-3xl">Personal Information</h2>
       <div className="grid-4">
+
+        {/* Display either the uploaded image or a dummy image */}
+        <div className="profile-picture-container flex gap-10 px-10 my-10 ">
+          <img
+            src={resumeData.profilePicture || dummyImage} // Display dummy image if no profile picture
+            alt="Profile"
+            className="profile-picture bg-gray-300 rounded-lg"
+            style={{ width: "110px", height: "110px", objectFit: "cover" }}
+          />
+       
+        {/* Upload input for profile picture */}
+        <div className="mt-10">
+        <input
+          type="file"
+          name="profileImage"
+          accept="image/*"
+          className="profileInput bg-gray-300 text-white border-black border"
+          onChange={handleProfilePicture}
+          placeholder="Profile Picture"
+        />
+        </div>
+ </div><br/>
+
         <input
           type="text"
           placeholder="Full Name"
@@ -20,7 +47,7 @@ const PersonalInformation = ({}) => {
           type="text"
           placeholder="Job Title"
           name="position"
-         className="pi border-black border"
+          className="pi border-black border "
           value={resumeData.position}
           onChange={handleChange}
         />
@@ -28,7 +55,7 @@ const PersonalInformation = ({}) => {
           type="text"
           placeholder="Contact Information"
           name="contactInformation"
-         className="pi border-black border"
+          className="pi border-black border"
           value={resumeData.contactInformation}
           onChange={handleChange}
           minLength="10"
@@ -38,7 +65,7 @@ const PersonalInformation = ({}) => {
           type="email"
           placeholder="Email"
           name="email"
-         className="pi border-black border"
+          className="pi border-black border"
           value={resumeData.email}
           onChange={handleChange}
         />
@@ -46,18 +73,11 @@ const PersonalInformation = ({}) => {
           type="text"
           placeholder="Address"
           name="address"
-         className="pi border-black border"
+          className="pi border-black border"
           value={resumeData.address}
           onChange={handleChange}
         />
-        <input
-          type="file"
-          name="profileImage"
-          accept="image/*"
-          className="profileInput bg-gray-300 text-white border-black border"
-          onChange={handleProfilePicture}
-          placeholder="Profile Picture"
-        />
+        
       </div>
     </div>
   );

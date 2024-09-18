@@ -37,7 +37,7 @@ const Template6 = () => {
       ];
     
   return (
-    <div className="bg-gray-100 p-4">
+    <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
         <div className="container mx-auto flex bg-white shadow-lg">
           {/* Left Column */}
           <div className="left-column w-8/12 p-8 border-r border-gray-300">
