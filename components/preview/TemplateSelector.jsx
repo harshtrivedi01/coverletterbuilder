@@ -21,7 +21,9 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     { key: 'template13', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
     { key: 'template14', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
     { key: 'template15', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template15', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template16', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template17', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template17', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
 
     // Add more templates here...
   ];
