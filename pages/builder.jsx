@@ -61,7 +61,7 @@ export default function Builder(props) {
   };
 
   const sections = [
-   { label: "Load/Unload", component: <LoadUnload /> },
+   //{ label: "Load/Unload", component: <LoadUnload /> },
     { label: "Details", component: <PersonalInformation /> },
     { label: "Social Media", component: <SocialMedia /> },
     { label: "Summary", component: <Summary /> },
