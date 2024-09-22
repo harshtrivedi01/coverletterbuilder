@@ -7,6 +7,8 @@ import { CgWebsite } from "react-icons/cg";
 import DateRange from "../utility/DateRange";
 import Language from "./Language";
 import Skills from "./Skills";
+import Image from "next/image";
+
 import Certification from "./Certification";
 // import Image from "next/image";
 import Link from "next/link";

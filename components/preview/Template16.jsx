@@ -7,6 +7,8 @@ import { CgWebsite } from "react-icons/cg";
 import DateRange from "../utility/DateRange";
 import Language from "./Language";
 import Skills from "./Skills";
+import Image from "next/image";
+
 import Certification from "./Certification";
 // import Image from "next/image";
 import Link from "next/link";
@@ -42,7 +44,13 @@ const Template16 = () => {
         <div class="flex gap-1 items-start">
           <div class="bg-gray-900 w-1/3 p-5 h-full">
             <div class="rounded-full border-solid	border-white-500 mb-5">
-              <img src="img/profile_one.png"></img>
+            <Image
+                    src={resumeData.profilePicture}
+                    alt="profile"
+                    width={100}
+                    height={100}
+                    className="object-cover h-full w-full"
+                  />
             </div>
               <div class="text-left text-white">
                   <div className="mb-8">
