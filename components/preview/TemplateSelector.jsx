@@ -29,7 +29,11 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     { key: 'template21', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
     { key: 'template22', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
     { key: 'template23', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template23', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template24', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template25', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template26', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template27', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template27', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
 
     // Add more templates here...
   ];
