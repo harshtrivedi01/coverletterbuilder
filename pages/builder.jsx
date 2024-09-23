@@ -96,12 +96,12 @@ export default function Builder(props) {
   // Function to download the Preview content as a PDF
   const downloadAsPDF = async () => {
     const element = previewRef.current;
-    const html2pdfModule = (await import("html2pdf.js")).default; // Dynamically load the module in client-side
-    
-    // Add custom style to control the gap between pages
+    const html2pdfModule = (await import("html2pdf.js")).default;
+  
+    // PDF options
     const opt = {
-     
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+      html2canvas: { scale: 2 }, // Optional: for better quality
     };
   
     html2pdfModule()
@@ -113,20 +113,13 @@ export default function Builder(props) {
         const totalPages = pdf.internal.getNumberOfPages();
         for (let i = 1; i <= totalPages; i++) {
           pdf.setPage(i);
-          if (i === 1) {
-            // Add padding to the bottom of the first page
-            pdf.setFontSize(10);
-            pdf.text(' ', 10, 10); // Add space or custom content
-          }
-          if (i === 2) {
-            // Add padding to the top of the second page
-            pdf.setFontSize(10);
-            pdf.text(' ', 10, 290); // Add space or custom content
-          }
+          pdf.setFontSize(10);
+          pdf.text(`Page ${i} of ${totalPages}`, 10, pdf.internal.pageSize.height - 10); // Bottom left
         }
       })
       .save();
   };
+  
   
   return (
     <>
