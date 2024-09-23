@@ -25,7 +25,7 @@ const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) =
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
 const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false })
 const Template13 = () => {
-    const { resumeData, setResumeData, headerColor } = useContext(ResumeContext);
+    const { resumeData, setResumeData, headerColor,backgroundColorss } = useContext(ResumeContext);
     const icons = [
         { name: "github", icon: <FaGithub /> },
         { name: "linkedin", icon: <FaLinkedin /> },
@@ -56,7 +56,7 @@ const Template13 = () => {
         </div>
 
         <div className="mb-5">
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Professional Summary</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor ,borderColor: backgroundColorss}} >Professional Summary</div>
           <p>{resumeData.summary}</p>
         </div>
 
@@ -91,7 +91,7 @@ const Template13 = () => {
 
         <div className="mb-5">
           
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Skills</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor ,borderColor: backgroundColorss}}>Skills</div>
           <ul className="list-disc ml-5">
          
           <Droppable droppableId="skills" type="SKILLS">
@@ -126,7 +126,7 @@ const Template13 = () => {
         </div>
 
         <div className="mb-5">
-          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3" style={{ color: headerColor }}>Work History</div>
+          <div className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3"style={{ color: headerColor ,borderColor: backgroundColorss}}>Work History</div>
           <div className="mb-5">
           {resumeData.workExperience.length > 0 && (
                   <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">

@@ -25,7 +25,7 @@ const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) =
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
 const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false })
 const Template10 = () => {
-    const { resumeData, setResumeData, headerColor } = useContext(ResumeContext);
+    const { resumeData, setResumeData, headerColor ,backgroundColorss} = useContext(ResumeContext);
     const icons = [
         { name: "github", icon: <FaGithub /> },
         { name: "linkedin", icon: <FaLinkedin /> },
@@ -38,8 +38,8 @@ const Template10 = () => {
 
     return (
         <div className="bg-gray-100 p-5">
-        <div className="max-w-4xl bg-white p-6 mx-auto shadow-md border-l-4 border-red-600">
-          <header className="text-center border-b-2 border-red-600 pb-3 mb-5">
+        <div className="max-w-4xl bg-white p-6 mx-auto shadow-md border-l-4 border-red-600" style={{ borderLeftColor: backgroundColorss }}>
+          <header className="text-center border-b-2 border-red-600 pb-3 mb-5" style={{ borderColor: backgroundColorss }}>
             <h1 className="text-3xl text-gray-800 uppercase tracking-wider" style={{ color: headerColor }}>{resumeData.name}</h1>
             <p className="text-sm text-gray-500 text-center m-0">
               <ContactInfo
