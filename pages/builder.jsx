@@ -97,12 +97,37 @@ export default function Builder(props) {
   const downloadAsPDF = async () => {
     const element = previewRef.current;
     const html2pdfModule = (await import("html2pdf.js")).default; // Dynamically load the module in client-side
-
+    
+    // Add custom style to control the gap between pages
+    const opt = {
+     
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    };
+  
     html2pdfModule()
       .from(element)
-      .save("resume-preview.pdf");
+      .set(opt)
+      .toPdf()
+      .get('pdf')
+      .then(pdf => {
+        const totalPages = pdf.internal.getNumberOfPages();
+        for (let i = 1; i <= totalPages; i++) {
+          pdf.setPage(i);
+          if (i === 1) {
+            // Add padding to the bottom of the first page
+            pdf.setFontSize(10);
+            pdf.text(' ', 10, 10); // Add space or custom content
+          }
+          if (i === 2) {
+            // Add padding to the top of the second page
+            pdf.setFontSize(10);
+            pdf.text(' ', 10, 290); // Add space or custom content
+          }
+        }
+      })
+      .save();
   };
-
+  
   return (
     <>
       <ResumeContext.Provider
