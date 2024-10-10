@@ -52,8 +52,6 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     { key: 'template19', imageUrl: template19 },
     { key: 'template20', imageUrl: template20 },
     { key: 'template20', imageUrl: template20 },
-    
-
     // Add more templates here...
   ];
 
