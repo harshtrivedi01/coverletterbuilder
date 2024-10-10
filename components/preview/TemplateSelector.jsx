@@ -1,4 +1,29 @@
 import React, { useState } from 'react';
+import Image from "next/image";
+import template1 from './template/template1.png'
+import template2 from './template/template2.png'
+import template3 from './template/template3.png'
+import template4 from './template/template4.png'
+import template5 from './template/template5.png'
+import template6 from './template/template6.png'
+import template7 from './template/template7.png'
+import template8 from './template/template8.png'
+import template9 from './template/template9.png'
+import template10 from './template/template10.png'
+import template11 from './template/template11.png'
+import template12 from './template/template12.png'
+import template13 from './template/template13.png'
+import template14 from './template/template14.png'
+import template15 from './template/template15.png'
+import template16 from './template/template16.png'
+import template17 from './template/template17.png'
+import template18 from './template/template18.png'
+import template19 from './template/template19.png'
+import template20 from './template/template20.png'
+
+
+
+
 
 const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
   const [isOpen, setIsOpen] = useState(false); // Modal state
@@ -6,27 +31,28 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
 
   // List of template images (Replace with actual image URLs)
   const templates = [
-    { key: 'template1', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template2', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template3', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template4', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template5', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template6', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template7', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template8', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template9', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template10', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template11', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template12', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template13', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template14', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template15', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template16', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template17', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template18', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template19', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template20', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
-    { key: 'template20', imageUrl: 'https://cdn-images.livecareer.co.uk/images/lc/common/cv-templates/jt/uk/cv-templates-modern-01@3x.png' },
+    { key: 'template1', imageUrl: template1 },
+    { key: 'template2', imageUrl: template2 },
+    { key: 'template3', imageUrl: template3 },
+    { key: 'template4', imageUrl: template4 },
+    { key: 'template5', imageUrl: template5 },
+    { key: 'template6', imageUrl: template6 },
+    { key: 'template7', imageUrl: template7 },
+    { key: 'template8', imageUrl: template8 },
+    { key: 'template9', imageUrl: template9 },
+    { key: 'template10', imageUrl: template10 },
+    { key: 'template11', imageUrl: template11 },
+    { key: 'template12', imageUrl: template12 },
+    { key: 'template13', imageUrl: template13 },
+    { key: 'template14', imageUrl: template14 },
+    { key: 'template15', imageUrl: template15 },
+    { key: 'template16', imageUrl: template16 },
+    { key: 'template17', imageUrl: template17 },
+    { key: 'template18', imageUrl: template18 },
+    { key: 'template19', imageUrl: template19 },
+    { key: 'template20', imageUrl: template20 },
+    { key: 'template20', imageUrl: template20 },
+    
 
     // Add more templates here...
   ];
@@ -94,10 +120,11 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
                       className={`flex-none w-1/3 px-2 ${template.key === templates[currentIndex].key ? 'border-4 p-0 rounded-lg border-purple-500 shadow-3xl ' : ''}`}
                       onClick={() => handleTemplateClick(template.key)}
                     >
-                      <img
+                      <Image
                         src={template.imageUrl}
+                        style={{objectFit:'cover' , backgroundImage:'cover'}}
                         alt={template.key}
-                        className="w-full  p-3 pt-0 object-cover rounded-lg cursor-pointer"
+                        className="w-full  p-3 pt-0 object-cover rounded-lg cursor-pointer h-80"
                       />
                       <p className="text-center ">{template.key}</p>
                     </div>

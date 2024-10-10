@@ -9,7 +9,7 @@ const Skill = ({ title }) => {
   const handleSkill = (e, index, title) => {
     const newSkills = [
       ...resumeData.skills.find((skillType) => skillType.title === title)
-        .skills,
+        ?.skills,
     ];
     newSkills[index] = e.target.value;
     setResumeData((prevData) => ({
@@ -25,6 +25,8 @@ const Skill = ({ title }) => {
       const skillType = prevData.skills.find(
         (skillType) => skillType.title === title
       );
+      if (!skillType) return prevData;
+
       const newSkills = [...skillType.skills, ""];
       const updatedSkills = prevData.skills.map((skill) =>
         skill.title === title ? { ...skill, skills: newSkills } : skill
@@ -41,6 +43,8 @@ const Skill = ({ title }) => {
       const skillType = prevData.skills.find(
         (skillType) => skillType.title === title
       );
+      if (!skillType) return prevData;
+
       const newSkills = [...skillType.skills];
       newSkills.pop();
       const updatedSkills = prevData.skills.map((skill) =>
@@ -57,9 +61,13 @@ const Skill = ({ title }) => {
     (skillType) => skillType.title === title
   );
 
+  if (!skillType || skillType.skills.length === 0) {
+    return null; // Render nothing if skillType is not found or has no skills
+  }
+
   return (
     <div className="flex-col-gap-2 mt-10">
-      <h2 className="input-title text-black  text-3xl">{title}</h2>
+      <h2 className="input-title text-black text-3xl">{title}</h2>
       {skillType.skills.map((skill, index) => (
         <div key={index} className="f-col">
           <input

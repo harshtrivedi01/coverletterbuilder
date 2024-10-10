@@ -9,7 +9,7 @@ const LoadUnload = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImVtYWlsIjoiYXJ5YW5zaGFybWFAZ21haWwuY29tIiwiZXhwIjoxNzI2NTYwMjE1fQ.9FH4vqwyPeN7xOsIdHYxAKaEhry3X5Hi6Y9h1Ktam9w";
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3R5cGVfaWQiOjEsImlkIjoyNCwiZW1haWwiOiJ0ZXN0dXNlckBnbWFpbC5jb20iLCJleHAiOjE3MzExNDc2MDd9.b9OyMqxVCxpzrwnESn5hNruKzbElCh0xFR30h9q0VFI";
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -31,7 +31,7 @@ const LoadUnload = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post('https://api.novajobs.us/api/resumebuild/resume-upload', formData, {
+      const response = await axios.post('https://api.sentryspot.co.uk/api/jobseeker/resume-upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': token
