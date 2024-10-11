@@ -25,6 +25,7 @@ import template20 from './template/template20.png'
 
 
 
+
 const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
   const [isOpen, setIsOpen] = useState(false); // Modal state
   const [currentIndex, setCurrentIndex] = useState(1); // Middle slide index
@@ -51,7 +52,17 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     { key: 'template18', imageUrl: template18 },
     { key: 'template19', imageUrl: template19 },
     { key: 'template20', imageUrl: template20 },
-    { key: 'template20', imageUrl: template20 },
+    { key: 'template21', imageUrl: template20 },
+    { key: 'template22', imageUrl: template20 },
+    { key: 'template23', imageUrl: template20 },
+    { key: 'template24', imageUrl: template20 },
+    { key: 'template25', imageUrl: template20 },
+    { key: 'template26', imageUrl: template20 },
+    { key: 'template27', imageUrl: template20 },
+    { key: 'template27', imageUrl: template20 },
+
+    
+
     // Add more templates here...
   ];
 

@@ -61,7 +61,7 @@ export default function Builder(props) {
   };
 
   const sections = [
-   { label: "Load/Unload", component: <LoadUnload /> },
+  // { label: "Upload resume", component: },
     { label: "Details", component: <PersonalInformation /> },
     { label: "Social Media", component: <SocialMedia /> },
     { label: "Summary", component: <Summary /> },
@@ -141,7 +141,7 @@ export default function Builder(props) {
 
         {/* Show controls and sections only if not finished */}
         {!isFinished && (
-          <>
+          <> <LoadUnload />
             <div className="flex justify-between bg-gray-200 p-2 px-5">
               <button
                 type="button"
@@ -186,20 +186,25 @@ export default function Builder(props) {
               {!formClose && (
                 <div className="flex w-full md:w-3/5">
                   <aside className="w-3/12 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
+                  
                     <ul className="space-y-2 text-center">
                       {sections.map((section, index) => (
                         <li
                           key={index}
+                          style={{ fontFamily: 'ubuntu' }}
                           className={`p-2 cursor-pointer ${
                             currentSection === index
-                              ? "bg-blue-950 rounded-lg text-white"
-                              : "bg-gray-200 text-black rounded-lg"
+                              ? "rounded-3xl border-y-2 border-blue-800  p- font-bold bg-blue-950  text-white"
+                              : "border-2 bg-white border-blue-800 rounded-3xl    text-blue-800"
                           }`}
                           onClick={() => handleSectionClick(index)}
                         >
                           {section.label}
+                      
                         </li>
+                        
                       ))}
+                      
                     </ul>
                   </aside>
                   <form className="p-4  exclude-print w-4/6 h-screen overflow-y-auto">
