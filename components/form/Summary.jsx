@@ -5,7 +5,7 @@ const Summary = () => {
   return (
     <div className="flex-col-gap-2 mt-10">
       <div className="flex justify-between mb-2">
-      <h2 className="input-title text-black  text-3xl">Summary</h2>
+      <h2 className="input-title text-black  text-3xl">Greeting</h2>
             <button
               type="button"
               className="border bg-black text-white px-3 rounded-3xl"
@@ -22,7 +22,7 @@ const Summary = () => {
           className="w-full other-input h-40 border-black border"
           value={resumeData.summary}
           onChange={handleChange}
-       
+          maxLength="500"
         />
       </div>
     </div>
