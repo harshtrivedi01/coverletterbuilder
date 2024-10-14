@@ -73,16 +73,16 @@ export default function Builder(props) {
   //   { label: "Certification", component: <Certification /> }, // Last section (index 9)
 
   { label: "Name & contact", component: <PersonalInformation /> },
-  { label: "Date", component: <SocialMedia /> },
+  { label: "Date", component: <Summary /> },
   { label: "Summary", component: <Summary /> },
-  { label: "Recipient", component: <Education /> },
-  { label: "Subject", component: <WorkExperience /> },
-  { label: "Greeting", component: <Projects /> },
-  { label: "Opening", component: Array.isArray(resumeData?.skills) ? resumeData.skills.map((skill, index) => <Skill title={skill.title} key={index} />) : <p>No skills available</p> },
-  { label: "Letter Body", component: <Language /> },
-  { label: "Call To Action", component: <Certification /> },
-  { label: "Closing", component: <Certification /> }, 
-  { label: "Call To Action", component: <Certification /> },
+  { label: "Recipient", component: <Summary />  },
+  { label: "Subject", component: <Summary />  },
+  { label: "Greeting", component: <Summary />  },
+  { label: "Opening", component:<Summary />  },
+  { label: "Letter Body", component: <Summary />  },
+  { label: "Call To Action", component: <Summary />  },
+  { label: "Closing", component: <Summary />  }, 
+  { label: "Call To Action", component: <Summary />  },
   ];
 
   const handleNext = () => {
