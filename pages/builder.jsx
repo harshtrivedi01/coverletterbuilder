@@ -62,15 +62,27 @@ export default function Builder(props) {
 
   const sections = [
   // { label: "Upload resume", component: },
-    { label: "Details", component: <PersonalInformation /> },
-   // { label: "Social Media", component: <SocialMedia /> },
-    { label: "Summary", component: <Summary /> },
-   // { label: "Education", component: <Education /> },
-  //  { label: "Work Experience", component: <WorkExperience /> },
-   // { label: "Projects", component: <Projects /> },
-   // { label: "Skills", component: Array.isArray(resumeData?.skills) ? resumeData.skills.map((skill, index) => <Skill title={skill.title} key={index} />) : <p>No skills available</p> },
-   // { label: "Language", component: <Language /> },
-   // { label: "Certification", component: <Certification /> }, // Last section (index 9)
+  //   { label: "Details", component: <PersonalInformation /> },
+  //  // { label: "Social Media", component: <SocialMedia /> },
+  //   { label: "Summary", component: <Summary /> },
+  //   { label: "Education", component: <Education /> },
+  //   { label: "Work Experience", component: <WorkExperience /> },
+  //   { label: "Projects", component: <Projects /> },
+  //   { label: "Skills", component: Array.isArray(resumeData?.skills) ? resumeData.skills.map((skill, index) => <Skill title={skill.title} key={index} />) : <p>No skills available</p> },
+  //   { label: "Language", component: <Language /> },
+  //   { label: "Certification", component: <Certification /> }, // Last section (index 9)
+
+  { label: "Name & contact", component: <PersonalInformation /> },
+  { label: "Date", component: <SocialMedia /> },
+  { label: "Summary", component: <Summary /> },
+  { label: "Recipient", component: <Education /> },
+  { label: "Subject", component: <WorkExperience /> },
+  { label: "Greeting", component: <Projects /> },
+  { label: "Opening", component: Array.isArray(resumeData?.skills) ? resumeData.skills.map((skill, index) => <Skill title={skill.title} key={index} />) : <p>No skills available</p> },
+  { label: "Letter Body", component: <Language /> },
+  { label: "Call To Action", component: <Certification /> },
+  { label: "Closing", component: <Certification /> }, 
+  { label: "Call To Action", component: <Certification /> },
   ];
 
   const handleNext = () => {
@@ -182,20 +194,20 @@ export default function Builder(props) {
               </button>
             </div>
 
-            <div className={`f-col gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto`} style={{ fontFamily: selectedFont }}>
+            <div className={`f-col px-40 gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto`} style={{ fontFamily: selectedFont }}>
               {!formClose && (
                 <div className="flex w-full ">
-                  <aside className="w-2/12 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
-                  
-                    <ul className="space-y-2 text-center">
+                  <aside className="w-2/12 p-4  exclude-print h-screen overflow-y-auto">
+                 <p className="border-b-2 border-black font-bold py-4"> Letter Sections</p>
+                    <ul className="space-y-2 text-center mt-5">
                       {sections.map((section, index) => (
                         <li
                           key={index}
                           style={{ fontFamily: 'ubuntu' }}
                           className={`p-2 cursor-pointer ${
                             currentSection === index
-                              ? "rounded-3xl border-y-2 border-blue-800  p- font-bold bg-blue-950  text-white"
-                              : "border-2 bg-white border-blue-800 rounded-3xl    text-blue-800"
+                              ? "border-dashed   border-2 border-blue-400     text-blue-900"
+                              : "    text-blue-800"
                           }`}
                           onClick={() => handleSectionClick(index)}
                         >
@@ -204,7 +216,7 @@ export default function Builder(props) {
                         </li>
                         
                       ))}
-                      
+                      <li className="border-t-2 border-black font-bold py-4">+ Add Section</li>
                     </ul>
                   </aside>
                   <div id="preview-section" className=" bg-white "  ref={previewRef} >
