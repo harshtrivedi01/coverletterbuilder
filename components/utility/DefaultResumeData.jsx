@@ -1,7 +1,7 @@
 const DefaultResumeData = {
   name: "MARCUS HALL",
   position: "Developer",
-  contactInformation: "+1-555-0100",
+  contactInformation: "Octuber, 09 2023",
   email: "beddylea@gmail.com",
   address: "San Francisco, CA",
   profilePicture: "",
@@ -19,11 +19,11 @@ const DefaultResumeData = {
       link: "bedivere-lea.github.io",
     },
   ],
-  summary: "Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications.",
+  summary: "Resourceful Developer with 11 years of experience in  Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a  Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications. Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications. Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications. tools and programs to provide effective applications.wide variety of tools and programs to provide effective applications. designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications.",
   education: [
     {
-      "school": "Bachelor of Computer Science",
-      "degree": "New York University",
+      "school": "Jhon Smith",
+      "degree": "Manager",
       "startYear": "2020-08-20",
       "endYear": "2024-07-01"
     },

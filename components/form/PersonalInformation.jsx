@@ -14,26 +14,7 @@ const PersonalInformation = ({}) => {
       <div className="grid-4">
 
         {/* Display either the uploaded image or a dummy image */}
-        <div className="profile-picture-container flex gap-10 px-10 my-10 ">
-          <img
-            src={resumeData.profilePicture || dummyImage} // Display dummy image if no profile picture
-            alt="Profile"
-            className="profile-picture bg-gray-300 rounded-lg"
-            style={{ width: "110px", height: "110px", objectFit: "cover" }}
-          />
-       
-        {/* Upload input for profile picture */}
-        <div className="mt-10">
-        <input
-          type="file"
-          name="profileImage"
-          accept="image/*"
-          className="profileInput bg-gray-300 text-white border-black border"
-          onChange={handleProfilePicture}
-          placeholder="Profile Picture"
-        />
-        </div>
- </div><br/>
+     
 
         <input
           type="text"

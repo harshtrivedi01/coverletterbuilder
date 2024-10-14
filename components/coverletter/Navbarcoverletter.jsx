@@ -56,10 +56,10 @@ const Navbarcoverletter = () => {
   <div className="h-0.5 w-28 bg-white mt-3"></div>
 
          {/* Step 4 */}
-         <Link href="Finalize" className="relative flex flex-col items-center">
+         <Link href="builder" className="relative flex flex-col items-center">
           <div
             className={`w-7 h-7 flex justify-center items-center  text-sm rounded-full border-2 ${
-                isActive("/Finalize") ?  "text-black bg-white text-sm font-bold" : "border-white text-white text-sm font-bold"
+                isActive("/builder") ?  "text-black bg-white text-sm font-bold" : "border-white text-white text-sm font-bold"
             }`}
           >
             4

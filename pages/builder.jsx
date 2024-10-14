@@ -63,14 +63,14 @@ export default function Builder(props) {
   const sections = [
   // { label: "Upload resume", component: },
     { label: "Details", component: <PersonalInformation /> },
-    { label: "Social Media", component: <SocialMedia /> },
+   // { label: "Social Media", component: <SocialMedia /> },
     { label: "Summary", component: <Summary /> },
-    { label: "Education", component: <Education /> },
-    { label: "Work Experience", component: <WorkExperience /> },
-    { label: "Projects", component: <Projects /> },
-    { label: "Skills", component: Array.isArray(resumeData?.skills) ? resumeData.skills.map((skill, index) => <Skill title={skill.title} key={index} />) : <p>No skills available</p> },
-    { label: "Language", component: <Language /> },
-    { label: "Certification", component: <Certification /> }, // Last section (index 9)
+   // { label: "Education", component: <Education /> },
+  //  { label: "Work Experience", component: <WorkExperience /> },
+   // { label: "Projects", component: <Projects /> },
+   // { label: "Skills", component: Array.isArray(resumeData?.skills) ? resumeData.skills.map((skill, index) => <Skill title={skill.title} key={index} />) : <p>No skills available</p> },
+   // { label: "Language", component: <Language /> },
+   // { label: "Certification", component: <Certification /> }, // Last section (index 9)
   ];
 
   const handleNext = () => {
@@ -184,8 +184,8 @@ export default function Builder(props) {
 
             <div className={`f-col gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto`} style={{ fontFamily: selectedFont }}>
               {!formClose && (
-                <div className="flex w-full md:w-3/5">
-                  <aside className="w-3/12 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
+                <div className="flex w-full ">
+                  <aside className="w-2/12 p-4 bg-gray-100 exclude-print h-screen overflow-y-auto">
                   
                     <ul className="space-y-2 text-center">
                       {sections.map((section, index) => (
@@ -207,15 +207,16 @@ export default function Builder(props) {
                       
                     </ul>
                   </aside>
-                  <form className="p-4  exclude-print w-4/6 h-screen overflow-y-auto">
+                  <div id="preview-section" className=" bg-white "  ref={previewRef} >
+              <Preview selectedTemplate={selectedTemplate} />
+              </div>
+                  <form className="p-4  exclude-print w-4/12 h-screen overflow-y-auto">
                     {sections[currentSection].component}
                   </form>
                 </div>
               )}
               {/* Ref applied to Preview component */}
-              <div id="preview-section" className=" bg-white "  ref={previewRef} >
-              <Preview selectedTemplate={selectedTemplate} />
-              </div>
+              
             </div>
           </>
         )}
