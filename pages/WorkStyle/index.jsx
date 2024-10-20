@@ -24,7 +24,7 @@ const WorkStyle = () => {
   // Handle final continue after selecting an option
   const handleFinalContinue = () => {
     if (selectedBox) {
-      router.push("/builder"); // Redirect to the next page
+      router.push("/Finalize"); // Redirect to the next page
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 const Landingpage = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const router = useRouter();
@@ -9,40 +9,76 @@ const Landingpage = () => {
     if (selectedOption === "create") {
       router.push("/Createletterpage"); // Redirect to create letter page
     } else if (selectedOption === "upload") {
-      router.push("/upload-resume"); // Redirect to upload resume page
+      router.push("/Createletterpage"); // Redirect to upload resume page
     }
   };
 
   return (
     <>
-      <div className="text-center font-semibold text-3xl my-20">
-        How do you want to start your cover letter?
+     <nav className="bg-gray-800 p-10 pe-40" >
+    
+      
+    </nav>
+      <div className="text-center  my-20">
+     <p className="font-semibold text-3xl mb-4"> How long have you been working?</p>
+      <p className="text-xl">We'll find the best templates for your experience level.</p>
       </div>
+      
 
-      <div className="flex gap-10 justify-center text-center">
+      <div className="flex gap-3 justify-center text-center">
         <div
-          className={`border h-60 w-1/3 rounded-lg pt-28 text-xl border-blue-700  cursor-pointer ${
+          className={`border   rounded-md px-8 py-5  text-lg border-gray-700  cursor-pointer ${
             selectedOption === "create" ? "bg-blue-100 border-2 border-blue-500" : ""
           }`}
           onClick={() => setSelectedOption("create")}
         >
-          <strong>Create new letter</strong> <br />
-          Walk me through each step
+        
+          No Experience
         </div>
 
         <div
-          className={`border h-60 w-1/3 rounded-lg pt-28 text-xl border-blue-700  cursor-pointer ${
-            selectedOption === "upload" ? "bg-blue-100 border-2 border-blue-500" : ""
+          className={`border   rounded-md px-8 py-5  text-lg border-gray-700  cursor-pointer ${
+            selectedOption === "upload" ? "bg-blue-100 border border-blue-500" : ""
           }`}
           onClick={() => setSelectedOption("upload")}
         >
-          <strong>Upload from resume</strong>
-          <br />
-          Create my cover letter with info from an existing resume
+        
+          Less than 3 Years
+        </div>
+
+        <div
+          className={`border   rounded-md px-14 py-5  text-lg border-gray-700  cursor-pointer ${
+            selectedOption === "3year" ? "bg-blue-100 border-2 border-blue-500" : ""
+          }`}
+          onClick={() => setSelectedOption("3year")}
+        >
+        
+         3-5 Years
+        </div>
+
+        <div
+          className={`border   rounded-md px-14 py-5  text-lg border-gray-700  cursor-pointer ${
+            selectedOption === "5year" ? "bg-blue-100 border-2 border-blue-500" : ""
+          }`}
+          onClick={() => setSelectedOption("5year")}
+        >
+        
+        5-10 Years
+        </div>
+
+       
+        <div
+          className={`border   rounded-md px-14 py-5  text-lg border-gray-700  cursor-pointer ${
+            selectedOption === "10year" ? "bg-blue-100 border-2 border-blue-500" : ""
+          }`}
+          onClick={() => setSelectedOption("10year")}
+        >
+        
+        10+ Years
         </div>
       </div>
 
-      <div className="flex px-60 my-20 justify-between text-center">
+      <div className="flex px-60 my-20 mt-40 justify-between text-center">
         <button className="border-2 rounded-full p-2 px-10 text-lg font-bold border-blue-800 text-blue-800">
          Back
         </button>

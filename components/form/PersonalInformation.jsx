@@ -10,7 +10,7 @@ const PersonalInformation = ({}) => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title text-black text-3xl">Personal Information</h2>
+      <h2 className="input-title text-black text-3xl">Name & contact</h2>
       <div className="grid-4">
 
         {/* Display either the uploaded image or a dummy image */}

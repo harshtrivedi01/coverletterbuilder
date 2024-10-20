@@ -21,6 +21,7 @@ import template18 from './template/template18.png'
 import template19 from './template/template19.png'
 import template20 from './template/template20.png'
 
+import { HiSelector } from "react-icons/hi";
 
 
 
@@ -101,9 +102,10 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     <div>
       <button
         onClick={openModal}
-        className="rounded-lg border-2 border-blue-800 px-5 py-2 font-bold bg-white text-blue-800"
+        className="flex font-bold "
       >
-        Select Template
+       <HiSelector />
+       Select Template
       </button>
 
       {/* Modal */}

@@ -16,6 +16,8 @@ import ColorPicker from './ColorPicker';
 import ColorPickers from "./ColorPickers";
 import Preview from "../components/preview/Preview";
 import TemplateSelector from "../components/preview/TemplateSelector";
+import { FaDownload } from "react-icons/fa";
+import { ImFont } from "react-icons/im";
 
 const html2pdf = dynamic(() => import("html2pdf.js"), { ssr: false });
 
@@ -68,7 +70,7 @@ export default function Builder(props) {
     { label: "Name & contact", component: <PersonalInformation /> },
     { label: "Date", component: <Education />},
     { label: "Summary", component: <Summary /> },
-    { label: "Recipient",  },
+    { label: "Recipient",  component:  <Language />   },
     { label: "Subject",  },
     { label: "Greeting", },
     { label: "Opening",  },
@@ -146,7 +148,9 @@ export default function Builder(props) {
 
         {!isFinished && (
           <>
-            <LoadUnload />
+   <nav className="bg-blue-950 p-7 pe-40 mb-5" ></nav>
+
+            {/*<LoadUnload /> 
             <div className="flex justify-between bg-gray-200 p-2 px-5">
               <button
                 type="button"
@@ -180,7 +184,7 @@ export default function Builder(props) {
                 {currentSection === sections.length - 1 ? "Finish" : "Next"}
               </button>
             </div>
-
+*/}
             <div className={`flex px-40 gap-2 md:flex-row justify-evenly md:mx-auto md:h-screen overflow-y-auto`} style={{ fontFamily: selectedFont }}>
               <aside className="w-2/12 p-4 exclude-print h-screen overflow-y-auto">
                 <p className="border-b-2 border-black font-bold py-4">Letter Sections</p>
@@ -201,7 +205,30 @@ export default function Builder(props) {
               <div id="preview-section" className="bg-white" ref={previewRef}>
                 <Preview selectedTemplate={selectedTemplate} />
               </div>
+              <div className="w-2/12 flex-col  px-3">
+             
+
+              <button
+                type="button"
+                onClick={downloadAsPDF}
+                className="flex font-bold"
+              >
+              <FaDownload />  Download 
+              </button> 
+              <br/>
+             
+              <Print /> <br/>
+                <ColorPicker selectedColor={headerColor} onChange={setHeaderColor} /> <br/>
+                <ColorPickers selectmultiplecolor={backgroundColorss} onChange={setBgColor} /> <br/>
+                <TemplateSelector selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate}/><br/>
+                <button className="rounded-3xl border-2 border-blue-800 px-7 py-2 font-bold bg-white text-blue-800"> Finsh Letter</button>
+            
+              </div>
+
+            
+              
             </div>
+            
 
             {isPopupOpen && (
               <div className="fixed overflow-scroll inset-0 flex items-center justify-center bg-black bg-opacity-50">

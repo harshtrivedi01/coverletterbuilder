@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IoIosColorFilter } from "react-icons/io";
 
 const colors = [
   { name: 'None', value: '' },
@@ -28,10 +29,11 @@ const ColorPicker = ({ selectedColor, onChange }) => {
     <div className="relative flex items-center">
       <button
         onClick={handleToggleDropdown}
-        className="rounded-lg border-2 border-blue-800 px-8 p-1 font-bold  bg-white text-blue-800"
+        className=" font-bold   flex"
         style={{ backgroundColor: selectedColor || 'transparent' }}
       >
-        Background Color
+       <IoIosColorFilter />
+       Background Color
       </button>
       {isOpen && (
         <div className="absolute top-10 mt-2  bg-white border rounded-3xl shadow-lg">
