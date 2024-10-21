@@ -21,7 +21,7 @@ const Finalize = () => {
      <h3 className=" font-semibold text-3xl"> Do you have a gap in your work history that you <br/> want to explain in your letter?</h3>
     
      
-      <p className="text-xl my-3 font-light"> If you were out of work due to COVID-19 or another reason, we'll help explain it in your letter.</p>
+      <p className="text-xl my-3 font-light"> If you were out of work due to COVID-19 or another reason, we ll help explain it in your letter.</p>
       </div>
 
       <div className="flex gap-10 justify-center text-center mb-60">

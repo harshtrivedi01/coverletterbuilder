@@ -21,7 +21,7 @@ const Landingpage = () => {
     </nav>
       <div className="text-center  my-20">
      <p className="font-semibold text-3xl mb-4"> How long have you been working?</p>
-      <p className="text-xl">We'll find the best templates for your experience level.</p>
+      <p className="text-xl">We ll find the best templates for your experience level.</p>
       </div>
       
 
