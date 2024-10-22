@@ -205,7 +205,7 @@ export default function Builder(props) {
               <div id="preview-section" className="bg-white" ref={previewRef}>
                 <Preview selectedTemplate={selectedTemplate} />
               </div>
-              <div className="w-2/12 flex-col  px-3">
+              <div className="w-2/12 flex-col px-3">
              
 
               <button
@@ -232,7 +232,7 @@ export default function Builder(props) {
 
             {isPopupOpen && (
               <div className="fixed overflow-scroll inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <div className="bg-white p-4 pt-40 w-4/6  rounded shadow overflow-scroll">
+                <div className="bg-white p-4 mt-5 pt-60 w-4/6  rounded shadow overflow-scroll">
                   {/* Render all forms in a single popup */}
                   {sections.map((section, index) => (
                     <div key={index}>
