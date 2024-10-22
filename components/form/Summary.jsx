@@ -7,18 +7,13 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import 'react-quill/dist/quill.snow.css'; // Import Quill's styling
 
 const Summary = () => {
-  const { resumeData = {}, setResumeData = () => {}, handleChange = () => {} } = useContext(ResumeContext) || {};
-
-  const stripHtml = (html) => {
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    return doc.body.textContent || "";
-  };
+  const { resumeData, setResumeData } = useContext(ResumeContext) || { resumeData: {}, setResumeData: () => {} };
 
   const handleQuillChange = (value) => {
-    const plainText = stripHtml(value); // Get plain text without HTML
+    // Directly store the HTML in the state if needed
     setResumeData((prevData) => ({
       ...prevData,
-      summary: plainText, // Store plain text in resumeData
+      summary: value, // Store the HTML directly if you want to keep formatting
     }));
   };
 
@@ -37,7 +32,7 @@ const Summary = () => {
       <div className="grid-4">
         <ReactQuill
           theme="snow"
-          value={resumeData.summary || ""}
+          value={resumeData.summary || ""} // Ensure this is a string
           onChange={handleQuillChange}
           placeholder="Summary"
           className="h-40"
