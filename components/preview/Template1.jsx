@@ -127,13 +127,9 @@ const Template1 = () => {
           {resumeData.education.map((item, index) => (
             <div key={index} >
                <p>{item.school}</p>
-            
-             
-              <DateRange
-                startYear={item.startYear}
-                endYear={item.endYear}
-                id={`education-start-end-date`}
-              /><br/>
+            <p>{item.startYear}</p>
+             <p>{item.endYear}</p>
+             <br/>
 
 <p> Dear,{" "}{item.degree}</p>
             </div>

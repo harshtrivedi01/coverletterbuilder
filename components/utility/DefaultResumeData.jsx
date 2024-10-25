@@ -37,24 +37,11 @@ const DefaultResumeData = {
       "startYear": "2023-02-16",
       "endYear": "2023-02-21"
     },
-    {
-      "company": "Reilty Group",
-      "position": "Front End Web Developer",
-      "description": "Reilty Group is an industry-leading provider of online gambling software and solutions.",
-      "keyAchievements": "Increased by 35% the reach of users to the platform, over the installation of the web platform in mobile devices.\nDelivered 30 web solutions.\nReplaced 1 full-time web developer under part-time employment achieving a productivity gain of over 60% as measured by working hours.\nWorked with more than 4 different teams at different points of time and provided end-to-end solutions for clients.",
-      "startYear": "2023-02-22",
-      "endYear": "2023-03-09"
-    },
-    {
-      "company": "HellX",
-      "position": "Python Developer",
-      "description": "Heller is a Software Editor specialized in logistics management.",
-      "keyAchievements": "Developed several automation systems - saved over $50,000 annually.\nJoined the team as #10 employee as a developer working directly with the biggest customers.\nInvolved in coding as per the requirement, delivered well ahead of time which saved project cost by 20%.\nReduced database size by nearly 50% and improved its performance by 20%.\nDelivery time of good reduced by 50%.",
-      "startYear": "2023-02-22",
-      "endYear": "2023-03-09"
-    }
+   
   ],
-  projects: [],
+  projects: [
+    
+  ],
   skills: [
     {
       title: "Technical Skills",

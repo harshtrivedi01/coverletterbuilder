@@ -67,17 +67,16 @@ export default function Builder(props) {
     // { label: "Language", component: <Language /> },
     // { label: "Certification", component: <Certification /> },
 
-    { label: "Name & contact", component: <PersonalInformation /> },
+    { label: "Your information ", component: <PersonalInformation /> },
     { label: "Date", component: <Education />},
-    { label: "Summary", component: <Summary /> },
-    { label: "Recipient",  component:  <Language />   },
-    { label: "Subject",  },
-    { label: "Greeting", },
-    { label: "Opening",  },
-    { label: "Letter Body",},
-    { label: "Call To Action",  },
-    { label: "Closing", }, 
-    { label: "Call To Action",  },
+    { label: " Employers info", component: <Summary /> },
+    { label: "Salutation ",    },
+    { label: "Introduction ",  component:  <WorkExperience /> },
+    { label: "Why you're Good Fit", component: <Projects />},
+    { label: "Why you want to Apply here",  component:  <Language /> },
+    { label: "Call To Action",},
+    { label: "Closing ",  },
+    { label: "Salutation",  },
   ];
 
   const handleNext = () => {
@@ -231,17 +230,17 @@ export default function Builder(props) {
             
 
             {isPopupOpen && (
-              <div className="fixed overflow-scroll inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <div className="bg-white p-4 mt-5 pt-60 w-4/6  rounded shadow overflow-scroll">
+              <div className="fixed  inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="bg-white p-10 h-4/5 pt- w-4/6 border-2 border-blue-700  rounded-xl shadow overflow-y-scroll">
                   {/* Render all forms in a single popup */}
                   {sections.map((section, index) => (
-                    <div key={index}>
+                    <div key={index} className="rounded-xl">
                     
                       {section.component}
                     </div>
                   ))}
                   <button
-                    className="mt-4 w-full bg-yellow-500 font-semibold text-white rounded py-2"
+                    className="mt-4 w-full bg-yellow-500 font-semibold text-white rounded-xl py-2"
                     onClick={handleClosePopup}
                   >
                     Save

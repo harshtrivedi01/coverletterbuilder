@@ -29,43 +29,55 @@ const Education = () => {
     };
     
     return (
-      <div className="flex-col-gap-2 mt-5">
-        <h2 className="input-title text-black  text-3xl">Subject</h2>
+      <div className="flex-col-gap-2 mt-5 p-3 bg-blue-50 rounded-xl">
+        <h2 className="input-title text-black underline mb-3 text-3xl">Employer’s Information        </h2>
         {resumeData.education.map((education, index) => (
           <div key={index} className="f-col">
-            <input
+          <div>
+          <h1 className="f text-sm text-blue-600 mb-1">Hiring Manager’s Name (If known)</h1>
+          <input
               type="text"
               placeholder="School"
               name="school"
-              className="w-full other-input border-black border"
+              className="w-full other-input rounded-lg"
               value={education.school}
               onChange={(e) => handleEducation(e, index)} />
-            <input
+            </div>
+           <div>
+       <h1 className="f text-sm text-blue-600 mb-1">Company Name           </h1>
+           <input
               type="text"
               placeholder="Degree"
               name="degree"
-              className="w-full other-input border-black border"
+              className="w-full other-input rounded-lg"
               value={education.degree}
               onChange={(e) => handleEducation(e, index)} />
-            <div className="flex-wrap-gap-2">
+            </div>
+            <div className="flex gap-4">
+              <div className="w-full">
+             <h1 className="f text-sm text-blue-600 mb-1">Company Address  </h1>
               <input
-                type="date"
-                placeholder="Start Year"
+                type="text"
+                placeholder="Company Address"
                 name="startYear"
-                className="other-input border-black border"
+                className="other-input rounded-lg w-full"
                 value={education.startYear}
                 onChange={(e) => handleEducation(e, index)} />
-              <input
-                type="date"
+                </div>
+                <div className="w-full">
+             <h1 className="f text-sm text-blue-600 mb-1 ">City, State ZIP Code</h1>
+             <input
+               type="text"
                 placeholder="End Year"
                 name="endYear"
-                className="other-input border-black border"
+                className="other-input rounded-lg w-full"
                 value={education.endYear}
                 onChange={(e) => handleEducation(e, index)} />
+              </div>
             </div>
           </div>
         ))}
-        <FormButton size={resumeData.education.length} add={addEducation} remove={removeEducation} />
+      
       </div>
     )
   }

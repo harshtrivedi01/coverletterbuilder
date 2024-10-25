@@ -37,12 +37,12 @@ const Projects = () => {
 
   // Ensure resumeData.projects is defined before mapping over it
   return (
-    <div className="flex-col-gap-2 mt-10">
-      <h2 className="input-title text-black text-3xl">Projects</h2>
+    <div className="flex-col-gap-2 mt-10 bg-blue-50 p-3 rounded-xl">
+      <h2 className="input-title "></h2>
       {resumeData.projects && resumeData.projects.length > 0 ? (
         resumeData.projects.map((project, index) => (
           <div key={index} className="f-col">
-            <input
+            {/* <input
               type="text"
               placeholder="Project Name"
               name="name"
@@ -57,25 +57,57 @@ const Projects = () => {
               className="w-full other-input border-black border"
               value={project.link}
               onChange={(e) => handleProjects(e, index)}
-            />
-            <textarea
+            /> */}
+           <div>
+           <h2 className="input-title text-black  text-3xl underline mt-5"> Call To Action
+
+</h2>
+<div className="flex justify-between mb-2">
+    <label className="mt-2"></label>
+    <button
+      type="button"
+      className="border bg-blue-900 text-white px-3 rounded-3xl"
+      onClick={(e) => handleAssistClick(e, index)}
+    >
+      + AI Assist
+    </button>
+  </div>
+           <textarea
               type="text"
               placeholder="Description"
               name="description"
-              className="w-full other-input border-black border h-32"
+              className="w-full other-input  h-32"
               value={project.description}
               maxLength="250"
               onChange={(e) => handleProjects(e, index)}
             />
+            </div>
+            <div>
+            <h2 className="input-title text-black text-3xl underline mt-5">Call To Action 
+
+
+</h2>
+<div className="flex justify-between mb-2">
+    <label className="mt-2"></label>
+    <button
+      type="button"
+      className="border bg-blue-900 text-white px-3 rounded-3xl"
+      onClick={(e) => handleAssistClick(e, index)}
+    >
+      + AI Assist
+    </button>
+  </div>
             <textarea
               type="text"
               placeholder="Key Achievements"
               name="keyAchievements"
-              className="w-full other-input border-black border h-40"
+              className="w-full other-input  h-40"
               value={project.keyAchievements}
               onChange={(e) => handleProjects(e, index)}
             />
-            <div className="flex-wrap-gap-2">
+            </div>
+           
+            {/* <div className="flex-wrap-gap-2">
               <input
                 type="date"
                 placeholder="Start Year"
@@ -92,17 +124,17 @@ const Projects = () => {
                 value={project.endYear}
                 onChange={(e) => handleProjects(e, index)}
               />
-            </div>
+            </div> */}
           </div>
         ))
       ) : (
         <p>No projects available. Add a new project to get started.</p>
       )}
-      <FormButton
+      {/* <FormButton
         size={resumeData.projects ? resumeData.projects.length : 0}
         add={addProjects}
         remove={removeProjects}
-      />
+      /> */}
     </div>
   );
 };

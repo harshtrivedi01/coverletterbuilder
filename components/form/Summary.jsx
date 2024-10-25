@@ -18,26 +18,26 @@ const Summary = () => {
   };
 
   return (
-    <div className="flex-col-gap-2 mt-10">
+    <div className="flex-col-gap-2 mt-10 h-full p-3 rounded-xl bg-blue-50">
       <div className="flex justify-between mb-2">
-        <h2 className="input-title text-black text-3xl">Greeting</h2>
+        <h2 className="input-title text-black text-3xl underline">Introduction</h2>
         <button
           type="button"
-          className="border bg-black text-white px-3 rounded-3xl"
+          className="border bg-blue-900 text-white px-3 rounded-3xl"
         >
           + AI Assist
         </button>
       </div>
 
-      <div className="grid-4">
+      
         <ReactQuill
           theme="snow"
           value={resumeData.summary || ""} // Ensure this is a string
           onChange={handleQuillChange}
           placeholder="Summary"
-          className="h-40"
+          className="bg-white"
         />
-      </div>
+      
     </div>
   );
 };

@@ -25,21 +25,21 @@ const Language = () => {
   };  
 
   return (
-    <div className="flex-col-gap-2 mt-14">
-      <h2 className="input-title text-black  text-3xl">{title || "Language"}</h2>
+    <div className="flex-col-gap-2 mt-14 bg-blue-50 p-3 rounded-xl">
+      <h2 className="input-title text-black  text-3xl underline">{"Closing"}</h2>
       {resumeData[skillType].map((skill, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
             placeholder={placeholder}
             name="skill"
-            className="w-full other-input border border-black"
+            className="w-full other-input "
             value={skill}
             onChange={(e) => handleSkills(e, index, skillType)}
           />
         </div>
       ))}
-      <FormButton size={resumeData[skillType].length} add={addSkill} remove={removeSkill} />
+      {/* <FormButton size={resumeData[skillType].length} add={addSkill} remove={removeSkill} /> */}
     </div>
   );
 };

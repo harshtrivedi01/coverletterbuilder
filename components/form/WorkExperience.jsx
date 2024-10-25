@@ -80,11 +80,12 @@ const WorkExperience = () => {
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title text-black text-3xl">Work Experience</h2>
+    <div className="flex-col-gap-2 bg-blue-50 p-3 rounded-xl">
+      <h2 className="input-title text-black text-3xl underline">Why You’re a Good Fit
+      </h2>
       {resumeData.workExperience.map((workExperience, index) => (
         <div key={index} className="f-col">
-          <label className="mt-2">Company</label>
+          {/* <label className="mt-2">Company</label>
           <input
             type="text"
             placeholder="Company"
@@ -92,8 +93,8 @@ const WorkExperience = () => {
             className="w-full other-input border-black border"
             value={workExperience.company}
             onChange={(e) => handleWorkExperience(e, index)}
-          />
-          <label className="mt-2">Job Title</label>
+          /> */}
+          {/* <label className="mt-2">Job Title</label>
           <input
             type="text"
             placeholder="Job Title"
@@ -119,12 +120,12 @@ const WorkExperience = () => {
               value={workExperience.endYear}
               onChange={(e) => handleWorkExperience(e, index)}
             />
-          </div>
+          </div> */}
           <div className="flex justify-between mb-2">
-            <label className="mt-2">Description</label>
+            <label className="mt-2"></label>
             <button
               type="button"
-              className="border bg-black text-white px-3 rounded-3xl"
+              className="border bg-blue-900 text-white px-3 rounded-3xl"
               onClick={(e) => handleAssistClick(e, index)}
             >
               + AI Assist
@@ -134,17 +135,29 @@ const WorkExperience = () => {
             type="text"
             placeholder="Description"
             name="description"
-            className="w-full other-input border-black border h-32"
+            className="w-full other-input  h-32"
             value={workExperience.description}
             maxLength="250"
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <label className="mt-2">Key Achievements</label>
+        <h2 className="input-title text-black text-3xl underline mt-5">Why you want to Apply here
+
+        </h2>
+        <div className="flex justify-between mb-2">
+            <label className="mt-2"></label>
+            <button
+              type="button"
+              className="border bg-blue-900 text-white px-3 rounded-3xl"
+              onClick={(e) => handleAssistClick(e, index)}
+            >
+              + AI Assist
+            </button>
+          </div>
           <textarea
             type="text"
             placeholder="Key Achievements"
             name="keyAchievements"
-            className="w-full other-input border-black border h-40"
+            className="w-full other-input  h-40"
             value={workExperience.keyAchievements}
             onChange={(e) => handleWorkExperience(e, index)}
           />
@@ -159,11 +172,7 @@ const WorkExperience = () => {
           )}
         </div>
       ))}
-      <FormButton
-        size={resumeData.workExperience.length}
-        add={addWorkExperience}
-        remove={removeWorkExperience}
-      />
+   
     </div>
   );
 };
